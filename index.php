@@ -11,6 +11,8 @@ class Index extends QForm{
 	/** @var QPanel The page header and footer panels for the page. */
 	protected $pnlPageHeader, $pnlPageFooter;
 
+	protected $strUserMsg;
+
 	public function Form_Create() {
 		// Get the Top Panel
 		$this->pnlPageHeader = new HeaderPanel($this, null);
@@ -18,6 +20,19 @@ class Index extends QForm{
 		$this->pnlPageFooter = new FooterPanel($this, null);
 		// and get the main page
 		$this->pnlPageMainBody = $this->SetController();
+		$userMan = new UserManagement();
+		if($userMan->getUser()==null){
+			$this->strUserMsg = "<li><a href='".__SM_URL_REWRITE__."/login'>Login</a></li>";
+		}
+		else{
+			$user= $userMan->getUser();
+			$this->strUserMsg = "<li class'dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown'>".$user->Name." <b class='caret'></b></a>
+			 	<ul class='dropdown-menu'>
+			 		<li><a href='".__SM_URL_REWRITE__."/user/".$user->Username."'>Your Profile</a></li>
+			 		<li><a href='".__SM_URL_REWRITE__."/logout'>Log Out</a></li>
+			 	</ul>
+			 	</li>";
+		}
 	}
 
 	/**
@@ -34,22 +49,14 @@ class Index extends QForm{
 			case 'logout':
 				$pnlMainBody = new LogoutController($this, null);
 				break;
-			case 'example':
-				$pnlMainBody = new ExampleController($this, null);
-				break;
-			case 'pages':
-				switch (QApplication::PathInfo(1)) {
-					case 'example':
-						$pnlMainBody = new ExampleController($this, null);
-						break;
-					case '404':
-						$pnlMainBody = new PageNotFoundController($this, null);
-						break;
-					default:
-						$pnlMainBody = new PageNotFoundController($this, null);
-						break;
-					}
-				break;
+			case 'user':
+				if(QApplication::PathInfo(1)==null){
+					$pnlMainBody = new PageNotFoundController($this, null);
+				}
+				else{
+					$pnlMainBody = new UserProfileController($this, null);
+				}
+			break;
 			case null:
 			case '':
 				$pnlMainBody = new WelcomeController($this, null);

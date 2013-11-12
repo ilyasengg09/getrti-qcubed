@@ -63,10 +63,12 @@ class LoginController extends QPanel{
 		$this->btnRegister->Text = "Register";
 		$this->btnRegister->ButtonMode = QButtonMode::Info;
 		$this->btnRegister->AddAction(new QClickEvent(), new QServerControlAction($this, 'btnRegister_Click'));
-		$this->strTemplate = __VIEWS_PATH__ . '/LoginView.tpl.php';
+
 
 		$this->lblMsg = new IAlertLabel($this);
 		$this->lblMsg->Visible = false;
+
+		$this->strTemplate = __VIEWS_PATH__ . '/LoginView.tpl.php';
 
 		$this->strPageTitle = __SM_APP_NAME__." - Log In";
 	}
