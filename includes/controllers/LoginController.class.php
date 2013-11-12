@@ -68,7 +68,7 @@ class LoginController extends QPanel{
 		$this->lblMsg = new IAlertLabel($this);
 		$this->lblMsg->Visible = false;
 
-		$this->strPageTitle = "Login or Register with ".__SM_APP_NAME__;
+		$this->strPageTitle = __SM_APP_NAME__." - Log In";
 	}
 
 	public function Form_Validate_Register(){

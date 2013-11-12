@@ -31,6 +31,9 @@ class Index extends QForm{
 			case 'login':
 				$pnlMainBody = new LoginController($this, null);
 				break;
+			case 'logout':
+				$pnlMainBody = new LogoutController($this, null);
+				break;
 			case 'example':
 				$pnlMainBody = new ExampleController($this, null);
 				break;
