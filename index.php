@@ -57,10 +57,12 @@ class Index extends QForm{
 					$pnlMainBody = new UserProfileController($this, null);
 				}
 			break;
+			/*
 			case null:
 			case '':
-				$pnlMainBody = new WelcomeController($this, null);
+				$pnlMainBody = new Controller($this, null);
 				break;
+			*/
 			default:
 				$pnlMainBody = new PageNotFoundController($this, null);
 				break;
