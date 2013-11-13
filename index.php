@@ -61,8 +61,11 @@ class Index extends QForm{
 				if(QApplication::PathInfo(1)==null){
 					$pnlMainBody = new PageNotFoundController($this, null);
 				}
-				else{
+				elseif(QApplication::PathInfo(2)==null){
 					$pnlMainBody = new CampaignsController($this, null);
+				}
+				else{
+					$pnlMainBody = new MPDetailsController($this, null);
 				}
 			break;
 			/*
