@@ -57,6 +57,14 @@ class Index extends QForm{
 					$pnlMainBody = new UserProfileController($this, null);
 				}
 			break;
+			case 'vote':
+				if(QApplication::PathInfo(1)==null){
+					$pnlMainBody = new PageNotFoundController($this, null);
+				}
+				else{
+					$pnlMainBody = new UserVoteController($this, null);
+				}
+			break;
 			/*
 			case null:
 			case '':

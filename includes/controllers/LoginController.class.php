@@ -15,7 +15,6 @@ class LoginController extends QPanel{
 	public $txtRegUsername;
 	public $txtRegPassword;
 	public $txtRegPasswordRepeat;
-	public $lstRegConstituency;
 	public $btnRegister;
 
 	public $lblMsg;
@@ -71,14 +70,6 @@ class LoginController extends QPanel{
 		$this->txtRegPasswordRepeat->Placeholder = "The above password again, please";
 		$this->txtRegPasswordRepeat->TextMode = QTextMode::Password;
 		$this->txtRegPasswordRepeat->Name = "Repeat Password";
-
-		$this->lstRegConstituency = new QListBox($this);
-		$this->lstRegConstituency->Name = "Constituency";
-		$this->lstRegConstituency->AddItem("-", 0);
-		$mps = MpLoksabha::LoadAll(QQ::OrderBy(QQN::MpLoksabha()->Constituency));
-		foreach($mps as $mp){
-			$this->lstRegConstituency->AddItem($mp->Constituency, $mp->Id);
-		}
 
 		$this->btnRegister = new QButton($this);
 		$this->btnRegister->Text = "Register";
@@ -142,11 +133,6 @@ class LoginController extends QPanel{
 			$this->lblMsg->Text .= "<li>Passwords cannot be more than 32 characters long.</li>";
 			$error = 1;
 		}
-		// checking constituency
-		if($this->lstRegConstituency->SelectedValue == 0){
-			$this->lblMsg->Text .= "<li>Please select your constituency.</li>";
-			$error = 1;
-		}
 		if($error==1){
 			$this->lblMsg->Visible = true;
 			$this->lblMsg->Text .= "</ul>";
@@ -208,7 +194,6 @@ class LoginController extends QPanel{
 			$t_hasher = new PasswordHash(8, false);
 			$hashedPassword = $t_hasher->HashPassword($this->txtRegPassword->Text);
 			$user->Password = $hashedPassword;
-			$user->Constituency = $this->lstRegConstituency->SelectedValue;
 			$user->Save();
 			$this->lblMsg->Text = "Your account has been registered. Please log in.";
 			$this->lblMsg->Visible = true;

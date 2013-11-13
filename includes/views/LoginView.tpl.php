@@ -33,9 +33,6 @@
 				<div class="form-group">
 					<?php $_CONTROL->txtRegPasswordRepeat->RenderWithName(); ?>
 				</div>
-				<div class="form-group">
-					<?php $_CONTROL->lstRegConstituency->RenderWithName(); ?>
-				</div>
 				<div class="form-actions">
 					<?php $_CONTROL->btnRegister->Render(); ?>
 				</div>

@@ -13,7 +13,9 @@
 				<li class="active"><a href="/index.php">Home</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
+				<li><a href="<?php echo __SM_URL_REWRITE__; ?>/vote/saverti">Cast Your Vote</a></li>
 				<?php echo $this->strUserMsg; ?>
+
 			</ul>
 		</div><!--/.nav-collapse -->
 	</div>
