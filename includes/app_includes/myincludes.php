@@ -13,4 +13,4 @@
 	QApplicationBase::$ClassFile['logincontroller'] = __CONTROLLERS_PATH__ . '/LoginController.class.php';
 	QApplicationBase::$ClassFile['logoutcontroller'] = __CONTROLLERS_PATH__ . '/LogoutController.class.php';
 	QApplicationBase::$ClassFile['userprofilecontroller'] = __CONTROLLERS_PATH__ . '/UserProfileController.class.php';
-	QApplicationBase::$ClassFile['uservotecontroller'] = __CONTROLLERS_PATH__ . '/UserVoteController.class.php';
+	QApplicationBase::$ClassFile['campaignscontroller'] = __CONTROLLERS_PATH__ . '/CampaignsController.class.php';

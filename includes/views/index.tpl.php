@@ -10,7 +10,11 @@
 <?php $this->pnlPageMainBody->Render(); ?>
 <?php $this->pnlPageFooter->Render(); ?>
 <?php $this->RenderEnd(); ?>
-<script src="<?php echo __APP_JS_ASSETS__ ; ?>/jquery.js"></script>
-<script src="<?php echo __APP_JS_ASSETS__ ; ?>/bootstrap.min.js"></script>
+<?php
+if(QApplication::PathInfo(0)!='campaign'){
+	echo '<script src="'.__APP_JS_ASSETS__.'/jquery.js"></script>';
+	echo '<script src="'.__APP_JS_ASSETS__.'/bootstrap.min.js"></script>';
+}
+?>
 </body>
 </html>
