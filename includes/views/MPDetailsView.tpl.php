@@ -58,7 +58,17 @@
 			</div>
 		</div>
 		<div class="col-lg-4">
-
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h3 class="panel-title">Constituency Stats</h3>
+				</div>
+				<div class="panel-body">
+					<div class="col-lg-10 col-lg-offset-4">
+						<h3><?php $_CONTROL->lblConstituencyFor->Render(); ?></h3> <p class="text-success">FOR</p>
+						<h3><?php $_CONTROL->lblConstituencyAgainst->Render(); ?></h3> <p class="text-danger">AGAINST</p>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

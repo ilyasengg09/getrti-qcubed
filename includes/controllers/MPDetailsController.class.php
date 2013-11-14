@@ -19,6 +19,9 @@ class MPDetailsController extends QPanel{
 	public $btnVoteFor;
 	public $btnVoteAgainst;
 
+	public $lblConstituencyFor;
+	public $lblConstituencyAgainst;
+
 	public $strCampaign;
 	public $user;
 	public $campaign;
@@ -123,6 +126,28 @@ class MPDetailsController extends QPanel{
 					$this->lblUserStand->Text = "<h3><p class='text-danger text-center'>Against</p></h3>";
 				}
 			}
+
+			// constituency stats
+
+			$this->lblConstituencyFor = new QLabel($this);
+			$this->lblConstituencyAgainst = new QLabel($this);
+
+			$noPeopleFor = 0;
+			$noPeopleAgainst = 0;
+			$votes = UsersVoteOnCampaigns::LoadAll();
+			foreach($votes as $vote){
+				if($vote->User->Constituency == Constituencies::LoadById(QApplication::PathInfo(2))->Id){
+					if($vote->Vote == true){
+						$noPeopleFor++;
+					}
+					else{
+						$noPeopleAgainst++;
+					}
+				}
+			}
+
+			$this->lblConstituencyFor->Text = $noPeopleFor;
+			$this->lblConstituencyAgainst->Text = $noPeopleAgainst;
 
 			$this->strTemplate = __VIEWS_PATH__ . '/MPDetailsView.tpl.php';
 
