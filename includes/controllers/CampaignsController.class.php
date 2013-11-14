@@ -26,7 +26,7 @@ class CampaignsController extends QPanel{
 			$this->txtSearch->CssClass = "col-lg-8";
 
 			$this->btnGo = new QButton($this);
-			$this->btnGo->Text = "Go to your constituency";
+			$this->btnGo->Text = "Go to Constituency";
 			$this->btnGo->ButtonMode = QButtonMode::Info;
 			$this->btnGo->ButtonSize = QButtonSize::Small;
 			$this->btnGo->AddAction(new QClickEvent(), new QServerControlAction($this, 'btnGo_Click'));

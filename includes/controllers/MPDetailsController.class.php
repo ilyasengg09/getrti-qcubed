@@ -22,9 +22,14 @@ class MPDetailsController extends QPanel{
 	public $lblConstituencyFor;
 	public $lblConstituencyAgainst;
 
+	public $dtrComments;
+	public $txtCommentBox;
+	public $btnCommentSubmit;
+
 	public $strCampaign;
 	public $user;
 	public $campaign;
+	public $constituency;
 
 	public $strVoteNow;
 
@@ -50,13 +55,14 @@ class MPDetailsController extends QPanel{
 			$this->txtSearch->CssClass = "col-lg-8";
 
 			$this->btnGo = new QButton($this);
-			$this->btnGo->Text = "Go to your constituency";
+			$this->btnGo->Text = "Go to Constituency";
 			$this->btnGo->ButtonMode = QButtonMode::Info;
 			$this->btnGo->ButtonSize = QButtonSize::Small;
 			$this->btnGo->AddAction(new QClickEvent(), new QServerControlAction($this, 'btnGo_Click'));
 
 			// MP Details
-			$mp = Mps::LoadByConstituency(Constituencies::LoadById(QApplication::PathInfo(2))->Id);
+			$this->constituency = Constituencies::LoadById(QApplication::PathInfo(2))->Id;
+			$mp = Mps::LoadByConstituency($this->constituency);
 			$this->lblMpName = new QLabel($this);
 			$this->lblMpName->HtmlEntities = false;
 			$this->lblParty = new QLabel($this);
@@ -120,7 +126,7 @@ class MPDetailsController extends QPanel{
 					$this->strVoteNow = "Vote Now&nbsp;";
 				}
 				elseif($userStand->Vote == true){
-					$this->lblUserStand->Text = "<h3><p class='text-success text-center'>For></p></h3>";
+					$this->lblUserStand->Text = "<h3><p class='text-success text-center'>For</p></h3>";
 				}
 				elseif($userStand->Vote == false){
 					$this->lblUserStand->Text = "<h3><p class='text-danger text-center'>Against</p></h3>";
@@ -148,6 +154,36 @@ class MPDetailsController extends QPanel{
 
 			$this->lblConstituencyFor->Text = $noPeopleFor;
 			$this->lblConstituencyAgainst->Text = $noPeopleAgainst;
+
+			// comments
+
+			$this->txtCommentBox = new QTextBox($this);
+			$this->txtCommentBox->TextMode = QTextMode::MultiLine;
+			$this->txtCommentBox->Rows = 3;
+			$this->txtCommentBox->Placeholder = "Let your MP know your views on this issue";
+
+			$this->btnCommentSubmit = new QButton($this);
+			$this->btnCommentSubmit->Text = "Submit Comment";
+			$this->btnCommentSubmit->ButtonMode = QButtonMode::Info;
+			$this->btnCommentSubmit->AddAction(new QClickEvent(), new QServerControlAction($this, 'btnCommentSubmit_Click'));
+
+
+			if($userMan->getUser()==null){
+				$this->txtCommentBox->Visible = false;
+				$this->btnCommentSubmit->Visible = false;
+			}
+			else{
+				$this->txtCommentBox->Visible = true;
+				$this->btnCommentSubmit->Visible = true;
+			}
+
+			$this->dtrComments = new QDataRepeater($this);
+			$this->dtrComments->Paginator = new QPaginator($this);
+			$this->dtrComments->ItemsPerPage = 10;
+			$this->dtrComments->UseAjax = false;
+			$this->dtrComments->Template = __VIEWS_PATH__ . '/commentfeed.tpl.php';
+			$this->dtrComments->TotalItemCount = UserCommentOnCampaigns::QueryCount(QQ::Equal(QQN::UserCommentOnCampaigns()->ConstituencyId, $this->constituency));
+			$this->dtrComments->DataSource = UserCommentOnCampaigns::QueryArray(QQ::Equal(QQN::UserCommentOnCampaigns()->ConstituencyId, $this->constituency), QQ::Clause($this->dtrComments->LimitClause, QQ::OrderBy(QQN::UserCommentOnCampaigns()->Date, false)));
 
 			$this->strTemplate = __VIEWS_PATH__ . '/MPDetailsView.tpl.php';
 
@@ -197,6 +233,17 @@ class MPDetailsController extends QPanel{
 		$this->user->Constituency = Constituencies::LoadById(QApplication::PathInfo(2))->Id;
 		$this->user->Save();
 		QApplication::Redirect(__SM_SITE_ADDRESS__.__SM_URL_REWRITE__."/campaign/saverti/comment");
+	}
+
+	public function btnCommentSubmit_Click($strFormId, $strControlId, $strParameter){
+		$comment = new UserCommentOnCampaigns();
+		$comment->UserId = $this->user->Id;
+		$comment->CampaignId = $this->campaign->Id;
+		$comment->ConstituencyId = $this->constituency;
+		$comment->Comment = $this->txtCommentBox->Text;
+		$comment->Date = QDateTime::Now();
+		$comment->Save();
+		QApplication::ExecuteJavaScript('location.reload()');
 	}
 
 	public function GetPageTitle() {
