@@ -155,6 +155,7 @@ class MPDetailsController extends QPanel{
 		$vote->CampaignId = $this->campaign->Id;
 		$vote->UserId = $this->user->Id;
 		$vote->Vote = true;
+		$vote->Date = QDateTime::Now();
 		$vote->Save();
 		$this->user->Constituency = Constituencies::LoadById(QApplication::PathInfo(2))->Id;
 		$this->user->Save();
@@ -166,6 +167,7 @@ class MPDetailsController extends QPanel{
 		$vote->CampaignId = $this->campaign->Id;
 		$vote->UserId = $this->user->Id;
 		$vote->Vote = false;
+		$vote->Date = QDateTime::Now();
 		$vote->Save();
 		$this->user->Constituency = Constituencies::LoadById(QApplication::PathInfo(2))->Id;
 		$this->user->Save();
