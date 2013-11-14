@@ -7,6 +7,17 @@ class CampaignsController extends QPanel{
 	public $txtSearch;
 	public $btnGo;
 
+	public $lblMpFor;
+	public $lblMpAgainst;
+	public $lblMpUndecided;
+
+	public $lblUsersFor;
+	public $lblUsersAgainst;
+
+	public $dtrComments;
+
+	public $campaign;
+
 	public function __construct($objParentObject, $strControlId){
 		try{
 			parent::__construct($objParentObject, $strControlId);
@@ -15,8 +26,8 @@ class CampaignsController extends QPanel{
 			throw $objExc;
 		}
 
-		$campaign = Campaigns::LoadBySlug(QApplication::PathInfo(1));
-		if($campaign == null){
+		$this->campaign = Campaigns::LoadBySlug(QApplication::PathInfo(1));
+		if($this->campaign == null){
 			$this->strTemplate = __VIEWS_PATH__ . '/PageNotFoundView.tpl.php';
 			$this->strPageTitle = "Page Not Found";
 		}
@@ -31,9 +42,58 @@ class CampaignsController extends QPanel{
 			$this->btnGo->ButtonSize = QButtonSize::Small;
 			$this->btnGo->AddAction(new QClickEvent(), new QServerControlAction($this, 'btnGo_Click'));
 
+			// MP Stats
+
+			$this->lblMpFor = new QLabel($this);
+			$this->lblMpFor->HtmlEntities = false;
+			$this->lblMpFor->Text = "<h3>";
+
+			$this->lblMpAgainst = new QLabel($this);
+			$this->lblMpAgainst->HtmlEntities = false;
+			$this->lblMpAgainst->Text = "<h3>";
+
+			$this->lblMpUndecided = new QLabel($this);
+			$this->lblMpUndecided->HtmlEntities = false;
+			$this->lblMpUndecided->Text = "<h3>";
+
+			$this->lblMpFor->Text.= $mpFor = MpStandOnCampaigns::QueryCount(QQ::AndCondition(QQ::Equal(QQN::MpStandOnCampaigns()->Vote, true), QQ::Equal(QQN::MpStandOnCampaigns()->CampaignId, $this->campaign->Id)));
+			$this->lblMpFor->Text.="</h3>";
+
+			$this->lblMpAgainst->Text.= $mpAgainst = MpStandOnCampaigns::QueryCount(QQ::AndCondition(QQ::Equal(QQN::MpStandOnCampaigns()->Vote, false), QQ::Equal(QQN::MpStandOnCampaigns()->CampaignId, $this->campaign->Id)));
+			$this->lblMpAgainst->Text.="</h3>";
+
+			$this->lblMpUndecided->Text.= Mps::CountAll() - ($mpFor+$mpAgainst);
+			$this->lblMpUndecided->Text.="</h3>";
+
+			// Users Stats
+
+			$this->lblUsersFor = new QLabel($this);
+			$this->lblUsersFor->HtmlEntities = false;
+			$this->lblUsersFor->Text = "<h3>";
+
+			$this->lblUsersAgainst = new QLabel($this);
+			$this->lblUsersAgainst->HtmlEntities = false;
+			$this->lblUsersAgainst->Text = "<h3>";
+
+			$this->lblUsersFor->Text.=UsersVoteOnCampaigns::QueryCount(QQ::AndCondition(QQ::Equal(QQN::UsersVoteOnCampaigns()->Vote, true), QQ::Equal(QQN::UsersVoteOnCampaigns()->CampaignId, $this->campaign->Id)));
+			$this->lblUsersFor->Text.="</h3>";
+
+			$this->lblUsersAgainst->Text.=UsersVoteOnCampaigns::QueryCount(QQ::AndCondition(QQ::Equal(QQN::UsersVoteOnCampaigns()->Vote, false), QQ::Equal(QQN::UsersVoteOnCampaigns()->CampaignId, $this->campaign->Id)));
+			$this->lblUsersAgainst->Text.="</h3>";
+
+			// comments
+
+			$this->dtrComments = new QDataRepeater($this);
+			$this->dtrComments->Paginator = new QPaginator($this);
+			$this->dtrComments->ItemsPerPage = 20;
+			$this->dtrComments->UseAjax = false;
+			$this->dtrComments->Template = __VIEWS_PATH__ . '/commentfeed.tpl.php';
+			$this->dtrComments->TotalItemCount = UserCommentOnCampaigns::CountAll();
+			$this->dtrComments->DataSource = UserCommentOnCampaigns::LoadAll(QQ::Clause($this->dtrComments->LimitClause, QQ::OrderBy(QQN::UserCommentOnCampaigns()->Date, false)));
+
 			$this->strTemplate = __VIEWS_PATH__ . '/CampaignsView.tpl.php';
 
-			$this->strPageTitle = __SM_APP_NAME__." - ".$campaign->Name;
+			$this->strPageTitle = __SM_APP_NAME__." - ".$this->campaign->Name;
 		}
 	}
 
