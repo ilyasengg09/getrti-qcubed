@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 14, 2013 at 08:44 PM
+-- Generation Time: Nov 14, 2013 at 08:47 PM
 -- Server version: 5.5.34
 -- PHP Version: 5.3.10-1ubuntu3.8
 
@@ -33,7 +33,14 @@ CREATE TABLE IF NOT EXISTS `campaigns` (
   `slug` varchar(8) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug` (`slug`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `campaigns`
+--
+
+INSERT INTO `campaigns` (`id`, `name`, `description`, `slug`) VALUES
+(1, 'Save RTI', 'Save the RTI from amendments', 'saverti');
 
 -- --------------------------------------------------------
 
