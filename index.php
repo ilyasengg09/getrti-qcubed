@@ -64,6 +64,9 @@ class Index extends QForm{
 				elseif(QApplication::PathInfo(2)==null){
 					$pnlMainBody = new CampaignsController($this, null);
 				}
+				elseif(QApplication::PathInfo(2)=='comment'){
+					$pnlMainBody = new UserAddCommentController($this, null);
+				}
 				else{
 					$pnlMainBody = new MPDetailsController($this, null);
 				}

@@ -13,6 +13,18 @@ class MPDetailsController extends QPanel{
 	public $lblEmail;
 	public $lblConstituency;
 
+	public $lblMpStand;
+	public $lblUserStand;
+
+	public $btnVoteFor;
+	public $btnVoteAgainst;
+
+	public $strCampaign;
+	public $user;
+	public $campaign;
+
+	public $strVoteNow;
+
 	public function __construct($objParentObject, $strControlId){
 		try{
 			parent::__construct($objParentObject, $strControlId);
@@ -21,12 +33,14 @@ class MPDetailsController extends QPanel{
 			throw $objExc;
 		}
 
-		$campaign = Campaigns::LoadBySlug(QApplication::PathInfo(1));
-		if($campaign == null){
+		$this->campaign = Campaigns::LoadBySlug(QApplication::PathInfo(1));
+		if($this->campaign == null){
 			$this->strTemplate = __VIEWS_PATH__ . '/PageNotFoundView.tpl.php';
 			$this->strPageTitle = "Page Not Found";
 		}
 		else{
+			$this->strCampaign = $this->campaign->Name;
+
 			// constituency search box
 			$this->txtSearch = new QAjaxAutoCompleteTextBox($this, 'txtServerSide_Change');
 			$this->txtSearch->Placeholder = "Start typing your constituency...";
@@ -37,10 +51,6 @@ class MPDetailsController extends QPanel{
 			$this->btnGo->ButtonMode = QButtonMode::Info;
 			$this->btnGo->ButtonSize = QButtonSize::Small;
 			$this->btnGo->AddAction(new QClickEvent(), new QServerControlAction($this, 'btnGo_Click'));
-
-			$this->strTemplate = __VIEWS_PATH__ . '/MPDetailsView.tpl.php';
-
-			$this->strPageTitle = __SM_APP_NAME__." - ".$campaign->Name;
 
 			// MP Details
 			$mp = Mps::LoadByConstituency(Constituencies::LoadById(QApplication::PathInfo(2))->Id);
@@ -58,9 +68,67 @@ class MPDetailsController extends QPanel{
 			$this->lblPAddress->Text = $mp->PermanentAddress." ".$mp->PermanentPhone;
 			$this->lblDAddress->Text = $mp->DelhiAddress." ".$mp->DelhiPhone;
 			$this->lblEmail->Text = "Email: ".$mp->Email;
-			$this->lblConstituency->Text = "<h3>".$mp->ConstituencyObject->Name.", ".$mp->ConstituencyObject->StateObject->Name."</h3>";
-		}
+			$this->lblConstituency->Text = "<h4>".$mp->ConstituencyObject->Name.", ".$mp->ConstituencyObject->StateObject->Name."</h4>";
 
+			// MP's Stand on issue
+
+			$this->lblMpStand = new QLabel($this);
+			$this->lblMpStand->HtmlEntities = false;
+
+			$mpStand = MpStandOnCampaigns::QuerySingle(QQ::AndCondition(QQ::Equal(QQN::MpStandOnCampaigns()->MpId, $mp->Id),QQ::Equal(QQN::MpStandOnCampaigns()->CampaignId, $this->campaign->Id)));
+			if($mpStand == null){
+				$this->lblMpStand->Text = "<h3><p class='text-center'>Undecided</p></h3>";
+			}
+			elseif($mpStand->Vote == true){
+				$this->lblMpStand->Text = "<h3><p class='text-success text-center'>For></p></h3>";
+			}
+			elseif($mpStand->Vote == false){
+				$this->lblMpStand->Text = "<h3><p class='text-danger text-center'>Against</p></h3>";
+			}
+
+			// User's stand on issue
+
+			$this->lblUserStand = new QLabel($this);
+			$this->lblUserStand->HtmlEntities = false;
+
+			$this->btnVoteFor = new QButton($this);
+			$this->btnVoteFor->ButtonMode = QButtonMode::Success;
+			$this->btnVoteFor->Text = "For";
+			$this->btnVoteFor->Visible = false;
+			$this->btnVoteFor->AddAction(new QClickEvent(), new QServerControlAction($this, 'btnVoteFor_Click'));
+
+			$this->btnVoteAgainst = new QButton($this);
+			$this->btnVoteAgainst->ButtonMode = QButtonMode::Danger;
+			$this->btnVoteAgainst->Text = "Against";
+			$this->btnVoteAgainst->Visible = false;
+			$this->btnVoteAgainst->AddAction(new QClickEvent(), new QServerControlAction($this, 'btnVoteAgainst_Click'));
+
+			$userMan = new UserManagement();
+			$this->user = $userMan->getUser();
+			if($this->user == null){
+				$this->lblUserStand->Text = "You are not logged in.";
+			}
+			else{
+				$userStand = UsersVoteOnCampaigns::QuerySingle(QQ::AndCondition(QQ::Equal(QQN::UsersVoteOnCampaigns()->UserId, $this->user->Id), QQ::Equal(QQN::UsersVoteOnCampaigns()->CampaignId, $this->campaign->Id)));
+				if($userStand == null){
+					$this->lblUserStand->Text = "<h3><p class='text-center'>You haven't voted yet.</p></h3>";
+					$this->btnVoteFor->Visible = true;
+					$this->btnVoteAgainst->Visible = true;
+					$this->strVoteNow = "Vote Now&nbsp;";
+				}
+				elseif($userStand->Vote == true){
+					$this->lblUserStand->Text = "<h3><p class='text-success text-center'>For></p></h3>";
+				}
+				elseif($userStand->Vote == false){
+					$this->lblUserStand->Text = "<h3><p class='text-danger text-center'>Against</p></h3>";
+				}
+			}
+
+			$this->strTemplate = __VIEWS_PATH__ . '/MPDetailsView.tpl.php';
+
+			$this->strPageTitle = __SM_APP_NAME__." - ".$this->strCampaign;
+
+		}
 	}
 
 	public function btnGo_Click($strFormId, $strControlId, $strParameter){
@@ -80,6 +148,28 @@ class MPDetailsController extends QPanel{
 			$result[] = $objMember->Name;
 		}
 		return $result;
+	}
+
+	public function btnVoteFor_Click($strFormId, $strControlId, $strParameter){
+		$vote = new UsersVoteOnCampaigns();
+		$vote->CampaignId = $this->campaign->Id;
+		$vote->UserId = $this->user->Id;
+		$vote->Vote = true;
+		$vote->Save();
+		$this->user->Constituency = Constituencies::LoadById(QApplication::PathInfo(2))->Id;
+		$this->user->Save();
+		QApplication::Redirect(__SM_SITE_ADDRESS__.__SM_URL_REWRITE__."/campaign/saverti/comment");
+	}
+
+	public function btnVoteAgainst_Click($strFormId, $strControlId, $strParameter){
+		$vote = new UsersVoteOnCampaigns();
+		$vote->CampaignId = $this->campaign->Id;
+		$vote->UserId = $this->user->Id;
+		$vote->Vote = false;
+		$vote->Save();
+		$this->user->Constituency = Constituencies::LoadById(QApplication::PathInfo(2))->Id;
+		$this->user->Save();
+		QApplication::Redirect(__SM_SITE_ADDRESS__.__SM_URL_REWRITE__."/campaign/saverti/comment");
 	}
 
 	public function GetPageTitle() {
