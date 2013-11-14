@@ -16,3 +16,5 @@
 	QApplicationBase::$ClassFile['campaignscontroller'] = __CONTROLLERS_PATH__ . '/CampaignsController.class.php';
 	QApplicationBase::$ClassFile['mpdetailscontroller'] = __CONTROLLERS_PATH__ . '/MPDetailsController.class.php';
 	QApplicationBase::$ClassFile['useraddcommentcontroller'] = __CONTROLLERS_PATH__ . '/UserAddCommentController.class.php';
+	QApplicationBase::$ClassFile['indexcontroller'] = __CONTROLLERS_PATH__ . '/IndexController.class.php';
+	QApplicationBase::$ClassFile['aboutcontroller'] = __CONTROLLERS_PATH__ . '/AboutController.class.php';

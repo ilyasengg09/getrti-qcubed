@@ -49,6 +49,9 @@ class Index extends QForm{
 			case 'logout':
 				$pnlMainBody = new LogoutController($this, null);
 				break;
+			case 'about':
+				$pnlMainBody = new AboutController($this, null);
+				break;
 			case 'user':
 				if(QApplication::PathInfo(1)==null){
 					$pnlMainBody = new PageNotFoundController($this, null);
@@ -71,12 +74,10 @@ class Index extends QForm{
 					$pnlMainBody = new MPDetailsController($this, null);
 				}
 			break;
-			/*
 			case null:
 			case '':
-				$pnlMainBody = new Controller($this, null);
+				$pnlMainBody = new IndexController($this, null);
 				break;
-			*/
 			default:
 				$pnlMainBody = new PageNotFoundController($this, null);
 				break;
