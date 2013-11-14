@@ -1,5 +1,11 @@
 <?php
 
+/*
+  * Created by Saurav Modak
+  * saurav at linuxb dot in
+  */
+
+
 require_once __EXTERNAL_LIBRARIES__ . '/phpass/PasswordHash.php';
 
 class LoginController extends QPanel{

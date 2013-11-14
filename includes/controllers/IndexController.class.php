@@ -1,5 +1,11 @@
 <?php
 
+/*
+  * Created by Saurav Modak
+  * saurav at linuxb dot in
+  */
+
+
 class IndexController extends QPanel{
 
 	public $strPageTitle;
@@ -14,7 +20,7 @@ class IndexController extends QPanel{
 
 		$this->strTemplate = __VIEWS_PATH__ . '/IndexView.tpl.php';
 
-		$this->strPageTitle = __SM_APP_NAME__." - Logout";
+		$this->strPageTitle = __SM_APP_NAME__;
 	}
 
 	public function GetPageTitle() {

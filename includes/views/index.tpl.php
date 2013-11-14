@@ -2,6 +2,7 @@
 <head>
 	<title><?php echo $this->strTitle; ?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Saurav Modak">
 	<link href="<?php echo __APP_CSS_ASSETS__ ; ?>/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body>

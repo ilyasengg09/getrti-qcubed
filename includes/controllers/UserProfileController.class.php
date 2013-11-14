@@ -1,5 +1,11 @@
 <?php
 
+/*
+  * Created by Saurav Modak
+  * saurav at linuxb dot in
+  */
+
+
 class UserProfileController extends QPanel{
 
 	public $strPageTitle;

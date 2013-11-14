@@ -1,5 +1,10 @@
 <?php
 
+	/*
+	 * Created by Saurav Modak
+	 * saurav at linuxb dot in
+	 */
+
 	// classes
 	QApplicationBase::$ClassFile['utils'] = __APP_INCLUDES__.'/classes/Utils.class.php';
 	QApplicationBase::$ClassFile['usermanagement'] = __APP_INCLUDES__.'/classes/UserManagement.class.php';

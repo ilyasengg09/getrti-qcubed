@@ -1,5 +1,11 @@
 <?php
 
+/*
+  * Created by Saurav Modak
+  * saurav at linuxb dot in
+  */
+
+
 class LogoutController extends QPanel{
 
 	public $strPageTitle;

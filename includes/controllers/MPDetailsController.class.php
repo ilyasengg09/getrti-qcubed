@@ -1,5 +1,11 @@
 <?php
 
+/*
+  * Created by Saurav Modak
+  * saurav at linuxb dot in
+  */
+
+
 class MPDetailsController extends QPanel{
 
 	public $strPageTitle;
@@ -187,7 +193,7 @@ class MPDetailsController extends QPanel{
 
 			$this->strTemplate = __VIEWS_PATH__ . '/MPDetailsView.tpl.php';
 
-			$this->strPageTitle = __SM_APP_NAME__." - ".$this->strCampaign;
+			$this->strPageTitle = __SM_APP_NAME__." - ".$this->strCampaign." ".$this->constituency;
 
 		}
 	}

@@ -1,5 +1,11 @@
 <?php
 
+/*
+  * Created by Saurav Modak
+  * saurav at linuxb dot in
+  */
+
+
 class UserAddCommentController extends QPanel{
 
 	public $strPageTitle;
@@ -47,7 +53,7 @@ class UserAddCommentController extends QPanel{
 
 			$this->strTemplate = __VIEWS_PATH__ . '/UserAddCommentView.tpl.php';
 
-			$this->strPageTitle = __SM_APP_NAME__." - Logout";
+			$this->strPageTitle = __SM_APP_NAME__." - Add a comment";
 		}
 
 	}
