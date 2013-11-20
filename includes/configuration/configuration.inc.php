@@ -58,9 +58,9 @@ if (!defined('SERVER_INSTANCE')) {
 			 *		__SUBDIRECTORY__ is defined as '/qcubed'
 			 *      /var/www/qcubed/wwwroot
 			 */
-			define ('__DOCROOT__', '/var/www/getrti.co.in');
-			define ('__VIRTUAL_DIRECTORY__', '');
-			define ('__SUBDIRECTORY__', '');
+			define ('__DOCROOT__', '/home/srvmdk/public_html');
+			define ('__VIRTUAL_DIRECTORY__', '/~srvmdk');
+			define ('__SUBDIRECTORY__', '/getrti-qcubed');
 
 			/*
 			 * These definitions will hardly change, but you may change them based on your setup

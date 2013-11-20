@@ -11,8 +11,8 @@
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="/index.php">Home</a></li>
-				<li><a href="<?php echo __SM_URL_REWRITE__; ?>/campaign/saverti">Save RTI</a></li>
-				<li><a href="<?php echo __SM_URL_REWRITE__; ?>/about">About</a></li>
+				<li><a href="<?php echo __SM_SITE_ADDRESS__.__SM_URL_REWRITE__; ?>/campaign/saverti">Save RTI</a></li>
+				<li><a href="<?php echo __SM_SITE_ADDRESS__.__SM_URL_REWRITE__; ?>/about">About</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 

@@ -22,14 +22,14 @@ class Index extends QForm{
 		$this->pnlPageMainBody = $this->SetController();
 		$userMan = new UserManagement();
 		if($userMan->getUser()==null){
-			$this->strUserMsg = "<li><a href='".__SM_URL_REWRITE__."/login'>Login</a></li>";
+			$this->strUserMsg = "<li><a href='".__SM_SITE_ADDRESS__.__SM_URL_REWRITE__."/login'>Login</a></li>";
 		}
 		else{
 			$user= $userMan->getUser();
 			$this->strUserMsg = "<li class'dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown'>".$user->Name." <b class='caret'></b></a>
 			 	<ul class='dropdown-menu'>
-			 		<li><a href='".__SM_URL_REWRITE__."/user/".$user->Username."'>Your Profile</a></li>
-			 		<li><a href='".__SM_URL_REWRITE__."/logout'>Log Out</a></li>
+			 		<li><a href='".__SM_SITE_ADDRESS__.__SM_URL_REWRITE__."/user/".$user->Username."'>Your Profile</a></li>
+			 		<li><a href='".__SM_SITE_ADDRESS__.__SM_URL_REWRITE__."/logout'>Log Out</a></li>
 			 	</ul>
 			 	</li>";
 		}
