@@ -20,8 +20,6 @@ class CampaignsController extends QPanel{
 	public $lblUsersFor;
 	public $lblUsersAgainst;
 
-	public $dtrComments;
-
 	public $campaign;
 
 	public function __construct($objParentObject, $strControlId){
@@ -86,19 +84,6 @@ class CampaignsController extends QPanel{
 
 			$this->lblUsersAgainst->Text.=UsersVoteOnCampaigns::QueryCount(QQ::AndCondition(QQ::Equal(QQN::UsersVoteOnCampaigns()->Vote, false), QQ::Equal(QQN::UsersVoteOnCampaigns()->CampaignId, $this->campaign->Id)));
 			$this->lblUsersAgainst->Text.="</h3>";
-
-			// comments
-
-			$this->dtrComments = new QDataRepeater($this);
-			$this->dtrComments->Paginator = new QPaginator($this);
-			$this->dtrComments->ItemsPerPage = 20;
-			$this->dtrComments->UseAjax = false;
-			$this->dtrComments->Template = __VIEWS_PATH__ . '/commentfeed.tpl.php';
-			$this->dtrComments->TotalItemCount = UserCommentOnCampaigns::CountAll();
-			$this->dtrComments->DataSource = UserCommentOnCampaigns::LoadAll(QQ::Clause($this->dtrComments->LimitClause, QQ::OrderBy(QQN::UserCommentOnCampaigns()->Date, false)));
-			if($this->dtrComments->TotalItemCount == 0){
-				$this->dtrComments->Paginator->Visible = false;
-			}
 
 			$this->strTemplate = __VIEWS_PATH__ . '/CampaignsView.tpl.php';
 

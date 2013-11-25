@@ -10,6 +10,13 @@
 		</div>
 	</div>
 	<div class="row">
+		<div class="col-lg-12">
+			<h2><?php echo $_CONTROL->campaign->Name; ?>
+				<small><?php echo $_CONTROL->campaign->Description; ?></small>
+			</h2>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-lg-6">
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -31,17 +38,14 @@
 				</div>
 				<div class="panel-body">
 					<div class="col-lg-8 col-lg-offset-4">
+						<br />
 						<?php $_CONTROL->lblUsersFor->Render(); ?> <p class="text-success">FOR</p>
+						<br />
 						<?php $_CONTROL->lblUsersAgainst->Render(); ?> <p class="text-danger">AGAINST</p>
+						<br />
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="row">
-		<table class="table">
-			<?php $_CONTROL->dtrComments->Render(); ?>
-		</table>
-		<div class="text-center"><?php $_CONTROL->dtrComments->Paginator->Render(); ?></div>
 	</div>
 </div>
