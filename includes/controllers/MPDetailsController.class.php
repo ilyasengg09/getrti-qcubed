@@ -3,6 +3,7 @@
 /*
   * Created by Saurav Modak
   * saurav at linuxb dot in
+  * Main page about the campaign, users can vote, add comments etc from here
   */
 
 
@@ -24,6 +25,9 @@ class MPDetailsController extends QPanel{
 
 	public $btnVoteFor;
 	public $btnVoteAgainst;
+
+	public $radioVote;
+	public $strVote;
 
 	public $lblConstituencyFor;
 	public $lblConstituencyAgainst;
@@ -161,27 +165,47 @@ class MPDetailsController extends QPanel{
 			$this->lblConstituencyFor->Text = $noPeopleFor;
 			$this->lblConstituencyAgainst->Text = $noPeopleAgainst;
 
+			// votes
+			$this->radioVote = new QRadioButtonList($this);
+			$this->radioVote->AddItem('For', 1);
+			$this->radioVote->AddItem('Against', 0);
+			$this->radioVote->Name = "Your Vote: ";
+			$this->radioVote->AddAction(new QChangeEvent(), new QAjaxControlAction($this, 'radioVote_Change'));
+
+			if(isset($_SESSION['vote'])){
+				if($_SESSION['vote']=='for'){
+					$this->radioVote->SelectedValue = 1;
+				}
+				else{
+					$this->radioVote->SelectedValue = 0;
+				}
+				$this->strVote = $_SESSION['vote'];
+			}
+
+			// voting will not be visible if user has already voted
+
+			if($this->user){
+				$userStand = UsersVoteOnCampaigns::QuerySingle(QQ::AndCondition(QQ::Equal(QQN::UsersVoteOnCampaigns()->UserId, $this->user->Id), QQ::Equal(QQN::UsersVoteOnCampaigns()->CampaignId, $this->campaign->Id)));
+				if($userStand!=null){
+					$this->radioVote->Visible = false;
+				}
+			}
+
 			// comments
 
 			$this->txtCommentBox = new QTextBox($this);
 			$this->txtCommentBox->TextMode = QTextMode::MultiLine;
 			$this->txtCommentBox->Rows = 3;
 			$this->txtCommentBox->Placeholder = "Let your MP know your views on this issue";
+			if(isset($_SESSION['comment'])){
+				$this->txtCommentBox->Text = $_SESSION['comment'];
+			}
 
 			$this->btnCommentSubmit = new QButton($this);
-			$this->btnCommentSubmit->Text = "Submit Comment";
+			$this->btnCommentSubmit->Text = "Submit";
 			$this->btnCommentSubmit->ButtonMode = QButtonMode::Info;
 			$this->btnCommentSubmit->AddAction(new QClickEvent(), new QServerControlAction($this, 'btnCommentSubmit_Click'));
 
-
-			if($userMan->getUser()==null){
-				$this->txtCommentBox->Visible = false;
-				$this->btnCommentSubmit->Visible = false;
-			}
-			else{
-				$this->txtCommentBox->Visible = true;
-				$this->btnCommentSubmit->Visible = true;
-			}
 
 			$this->dtrComments = new QDataRepeater($this);
 			$this->dtrComments->Paginator = new QPaginator($this);
@@ -245,14 +269,55 @@ class MPDetailsController extends QPanel{
 	}
 
 	public function btnCommentSubmit_Click($strFormId, $strControlId, $strParameter){
-		$comment = new UserCommentOnCampaigns();
-		$comment->UserId = $this->user->Id;
-		$comment->CampaignId = $this->campaign->Id;
-		$comment->ConstituencyId = $this->constituency;
-		$comment->Comment = $this->txtCommentBox->Text;
-		$comment->Date = QDateTime::Now();
-		$comment->Save();
-		QApplication::ExecuteJavaScript('location.reload()');
+		if($this->user == null){
+			$_SESSION['comment'] = $this->txtCommentBox->Text;
+			$utils = new Utils();
+			if(isset($this->strVote)){
+				$_SESSION['vote'] = $this->strVote;
+			}
+			QApplication::Redirect(__SM_SITE_ADDRESS__.__SM_URL_REWRITE__."/login?next=".urlencode($utils->curPageURL()));
+		}
+		else{
+			$comment = new UserCommentOnCampaigns();
+			$comment->UserId = $this->user->Id;
+			$comment->CampaignId = $this->campaign->Id;
+			$comment->ConstituencyId = $this->constituency;
+			$comment->Comment = $this->txtCommentBox->Text;
+			$comment->Date = QDateTime::Now();
+			$comment->Save();
+			if(isset($this->strVote)){
+				if($this->strVote=='for'){
+					$vote = new UsersVoteOnCampaigns();
+					$vote->CampaignId = $this->campaign->Id;
+					$vote->UserId = $this->user->Id;
+					$vote->Vote = true;
+					$vote->Date = QDateTime::Now();
+					$vote->Save();
+					$this->user->Constituency = Constituencies::LoadById(QApplication::PathInfo(2))->Id;
+					$this->user->Save();
+				}
+				else{
+					$vote = new UsersVoteOnCampaigns();
+					$vote->CampaignId = $this->campaign->Id;
+					$vote->UserId = $this->user->Id;
+					$vote->Vote = false;
+					$vote->Date = QDateTime::Now();
+					$vote->Save();
+					$this->user->Constituency = Constituencies::LoadById(QApplication::PathInfo(2))->Id;
+					$this->user->Save();
+				}
+			}
+			QApplication::ExecuteJavaScript('location.reload()');
+		}
+	}
+
+	public function radioVote_Change($strFormId, $strControlId, $strParameter){
+		if($this->radioVote->SelectedValue){
+			$this->strVote = 'for';
+		}
+		else{
+			$this->strVote = 'against';
+		}
 	}
 
 	public function GetPageTitle() {

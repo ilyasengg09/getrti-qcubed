@@ -3,6 +3,7 @@
 /*
   * Created by Saurav Modak
   * saurav at linuxb dot in
+  * Login Page
   */
 
 
@@ -24,6 +25,7 @@ class LoginController extends QPanel{
 	public $btnRegister;
 
 	public $lblMsg;
+	public $lblLoginMsg;
 
 
 	public function __construct($objParentObject, $strControlId){
@@ -85,6 +87,15 @@ class LoginController extends QPanel{
 
 		$this->lblMsg = new IAlertLabel($this);
 		$this->lblMsg->Visible = false;
+
+		$this->lblLoginMsg = new IAlertLabel($this);
+		$this->lblLoginMsg->Visible = false;
+
+		if(isset($_GET['next'])){
+			$this->lblLoginMsg->Text = "You need to login to complete that action";
+			$this->lblLoginMsg->AlertLabelMode = IAlertLabelMode::Info;
+			$this->lblLoginMsg->Visible = true;
+		}
 
 		$this->strTemplate = __VIEWS_PATH__ . '/LoginView.tpl.php';
 
@@ -217,7 +228,12 @@ class LoginController extends QPanel{
 			$user = $this->Form_Validate_Login();
 			$userMan = new UserManagement();
 			$userMan->addSession($user->Email);
-			QApplication::Redirect(__SM_SITE_ADDRESS__.__SM_URL_REWRITE__);
+			if(isset($_GET['next'])){
+				QApplication::Redirect($_GET['next']);
+			}
+			else{
+				QApplication::Redirect(__SM_SITE_ADDRESS__.__SM_URL_REWRITE__);
+			}
 		}
 	}
 

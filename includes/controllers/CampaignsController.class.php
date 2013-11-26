@@ -3,6 +3,8 @@
 /*
   * Created by Saurav Modak
   * saurav at linuxb dot in
+  *
+  * Displays info about the campaign, name, desc, MP's Stand, Users' stand etc
   */
 
 

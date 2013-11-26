@@ -1,4 +1,7 @@
 <?php
+/*
+ * Footer of the page, you can add tracking code, scripts etc here
+ */
 
 class FooterPanel extends QPanel {
 	/**

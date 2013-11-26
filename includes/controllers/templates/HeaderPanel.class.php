@@ -1,4 +1,7 @@
 <?php
+/*
+ * Header of the page, contains Navbar etc
+ */
 
 class HeaderPanel extends QPanel {
 	/** @var string The HTML to be rendered */

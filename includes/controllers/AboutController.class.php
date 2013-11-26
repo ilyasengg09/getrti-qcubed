@@ -3,6 +3,8 @@
 	/*
  	 * Created by Saurav Modak
  	 * saurav at linuxb dot in
+	 *
+	 * Contains info about project volunteers
  	 */
 
 class AboutController extends QPanel{
