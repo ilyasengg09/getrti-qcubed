@@ -199,6 +199,7 @@ class MPDetailsController extends QPanel{
 			$this->txtCommentBox->Placeholder = "Let your MP know your views on this issue";
 			if(isset($_SESSION['comment'])){
 				$this->txtCommentBox->Text = $_SESSION['comment'];
+				unset($_SESSION['comment']);
 			}
 
 			$this->btnCommentSubmit = new QButton($this);
@@ -307,7 +308,8 @@ class MPDetailsController extends QPanel{
 					$this->user->Save();
 				}
 			}
-			QApplication::ExecuteJavaScript('location.reload()');
+			$utilsObj = new Utils();
+			QApplication::Redirect($utilsObj->curPageURL());
 		}
 	}
 
