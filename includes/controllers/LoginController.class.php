@@ -59,7 +59,7 @@ class LoginController extends QPanel{
 		// register form
 		$this->txtRegName = new QTextBox($this);
 		$this->txtRegName->Placeholder = "Your Name";
-		$this->txtRegName->Name = "Name";
+		$this->txtRegName->Name = "Full Name";
 
 		$this->txtRegEmail = new QTextBox($this);
 		$this->txtRegEmail->Placeholder = "An e-mail where we can contact you";
