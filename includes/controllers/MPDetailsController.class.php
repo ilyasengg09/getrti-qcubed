@@ -184,6 +184,7 @@ class MPDetailsController extends QPanel{
 			$this->txtCommentBox->TextMode = QTextMode::MultiLine;
 			$this->txtCommentBox->Rows = 3;
 			$this->txtCommentBox->Placeholder = "Let your MP know your views on this issue";
+			$this->txtCommentBox->BorderStyle
 			if(isset($_SESSION['comment'])){
 				$this->txtCommentBox->Text = $_SESSION['comment'];
 				unset($_SESSION['comment']);
