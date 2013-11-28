@@ -13,9 +13,9 @@
 <?php $this->RenderEnd(); ?>
 <?php
 if(QApplication::PathInfo(0)!='campaign'){
-	echo '<script src="'.__APP_JS_ASSETS__.'/jquery.js"></script>';
+	echo '<script src="'.__SM_SITE_ABSOLUTE__ADDRESS__.__APP_JS_ASSETS__.'/jquery.js"></script>';
 }
 ?>
-<script src="<?php echo __APP_JS_ASSETS__; ?>/bootstrap.min.js"></script>
+<script src="<?php echo __SM_SITE_ABSOLUTE__ADDRESS__.__APP_JS_ASSETS__; ?>/bootstrap.min.js"></script>
 </body>
 </html>

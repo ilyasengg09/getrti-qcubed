@@ -12,9 +12,6 @@ class CampaignsController extends QPanel{
 
 	public $strPageTitle;
 
-	public $txtSearch;
-	public $btnGo;
-
 	public $lblMpFor;
 	public $lblMpAgainst;
 	public $lblMpUndecided;
@@ -38,15 +35,6 @@ class CampaignsController extends QPanel{
 			$this->strPageTitle = "Page Not Found";
 		}
 		else{
-			$this->txtSearch = new QAjaxAutoCompleteTextBox($this, 'txtServerSide_Change');
-			$this->txtSearch->Placeholder = "Start typing your constituency...";
-			$this->txtSearch->CssClass = "col-lg-8";
-
-			$this->btnGo = new QButton($this);
-			$this->btnGo->Text = "Go to Constituency";
-			$this->btnGo->ButtonMode = QButtonMode::Info;
-			$this->btnGo->ButtonSize = QButtonSize::Small;
-			$this->btnGo->AddAction(new QClickEvent(), new QServerControlAction($this, 'btnGo_Click'));
 
 			// MP Stats
 
@@ -91,25 +79,6 @@ class CampaignsController extends QPanel{
 
 			$this->strPageTitle = __SM_APP_NAME__." - ".$this->campaign->Name;
 		}
-	}
-
-	public function btnGo_Click($strFormId, $strControlId, $strParameter){
-		$url = __SM_SITE_ADDRESS__.__SM_URL_REWRITE__."/campaign/saverti/".Constituencies::QuerySingle(QQ::Equal(QQN::Constituencies()->Name, $this->txtSearch->Text))->Id;
-		QApplication::Redirect($url);
-	}
-
-	public function txtServerSide_change($strParameter){
-		$objMemberArray = Constituencies::QueryArray(
-			QQ::OrCondition(
-				QQ::Like(QQN::Constituencies()->Name, $strParameter . '%')
-			),
-			QQ::Clause(QQ::OrderBy(QQN::Constituencies()->Name))
-		);
-		$result = array();
-		foreach($objMemberArray as $objMember){
-			$result[] = $objMember->Name;
-		}
-		return $result;
 	}
 
 	public function GetPageTitle() {

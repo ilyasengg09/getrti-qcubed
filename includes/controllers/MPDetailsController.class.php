@@ -11,8 +11,6 @@ class MPDetailsController extends QPanel{
 
 	public $strPageTitle;
 
-	public $txtSearch;
-	public $btnGo;
 	public $lblMpName;
 	public $lblParty;
 	public $lblPAddress;
@@ -58,17 +56,6 @@ class MPDetailsController extends QPanel{
 		}
 		else{
 			$this->strCampaign = $this->campaign->Name;
-
-			// constituency search box
-			$this->txtSearch = new QAjaxAutoCompleteTextBox($this, 'txtServerSide_Change');
-			$this->txtSearch->Placeholder = "Start typing your constituency...";
-			$this->txtSearch->CssClass = "col-lg-8";
-
-			$this->btnGo = new QButton($this);
-			$this->btnGo->Text = "Go to Constituency";
-			$this->btnGo->ButtonMode = QButtonMode::Info;
-			$this->btnGo->ButtonSize = QButtonSize::Small;
-			$this->btnGo->AddAction(new QClickEvent(), new QServerControlAction($this, 'btnGo_Click'));
 
 			// MP Details
 			$this->constituency = Constituencies::LoadById(QApplication::PathInfo(2))->Id;
@@ -205,7 +192,9 @@ class MPDetailsController extends QPanel{
 			$this->btnCommentSubmit = new QButton($this);
 			$this->btnCommentSubmit->Text = "Submit";
 			$this->btnCommentSubmit->ButtonMode = QButtonMode::Info;
+			$this->btnCommentSubmit->AddAction(new QEnterKeyEvent(), new QServerControlAction($this, 'btnCommentSubmit_Click'));
 			$this->btnCommentSubmit->AddAction(new QClickEvent(), new QServerControlAction($this, 'btnCommentSubmit_Click'));
+
 
 
 			$this->dtrComments = new QDataRepeater($this);

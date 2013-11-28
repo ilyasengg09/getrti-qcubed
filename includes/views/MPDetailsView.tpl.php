@@ -1,23 +1,10 @@
 <div class="container">
+	<?php include __VIEWS_PATH__.'/searchbox.tpl.php'; ?>
 	<div class="row">
 		<div class="col-lg-12">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2">
-					<div class="form-horizontal">
-						<div class="form-group">
-							<?php $_CONTROL->txtSearch->Render(); ?>
-							<?php $_CONTROL->btnGo->Render(); ?>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-12">
-					<h2><?php echo $_CONTROL->campaign->Name; ?>
-						<small><?php echo $_CONTROL->campaign->Description; ?></small>
-					</h2>
-				</div>
-			</div>
+			<h2><?php echo $_CONTROL->campaign->Name; ?>
+				<small><?php echo $_CONTROL->campaign->Description; ?></small>
+			</h2>
 		</div>
 	</div>
 	<div class="row">
