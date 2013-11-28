@@ -1,11 +1,14 @@
 <div class="container">
-	<?php include __VIEWS_PATH__.'/searchbox.tpl.php'; ?>
-	<div class="row">
+
+	<div class="row" style="
+    background-color: antiquewhite;
+">
 		<div class="col-lg-12">
-			<h2><?php echo $_CONTROL->campaign->Description; ?>
+			<h2 style="font-weight:bold;padding-left:10px;"><?php echo $_CONTROL->campaign->Description; ?>
 			</h2>
 		</div>
 	</div>
+	<?php include __VIEWS_PATH__.'/searchbox.tpl.php'; ?>
 	<div class="row">
 		<div class="col-lg-6">
 			<div class="panel panel-default">

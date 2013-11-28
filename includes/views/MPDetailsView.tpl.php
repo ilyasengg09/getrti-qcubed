@@ -1,8 +1,10 @@
 <div class="container">
-	<?php include __VIEWS_PATH__.'/searchbox.tpl.php'; ?>
+
 	<div class="row">
 		<div class="col-lg-12">
-			<h2><?php echo $_CONTROL->campaign->Description; ?></h2>
+			<h2 style="
+    font-weight: bold;
+"><?php echo $_CONTROL->campaign->Description; ?></h2>
 		</div>
 	</div>
 	<div class="row" style="margin-top:20px;">
@@ -63,11 +65,12 @@
 					</div>
 				</div>
 			</div>
-			<div class="row">
+			<div  class="row">
 				<div class="col-lg-12">
 					<?php $_CONTROL->lblMsg->Render(); ?>
-					<div class="row">
+					<div style="background-color:lightgrey;"  class="row">
 						<div class="col-lg-12">
+
 							<?php $_CONTROL->txtCommentBox->Render(); ?>
 							<?php $_CONTROL->radioVote->RenderWithName(); ?>
 							<?php $_CONTROL->btnCommentSubmit->Render(); ?><br /><br />
