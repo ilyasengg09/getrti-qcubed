@@ -1,8 +1,8 @@
 <div class="container">
-	<div class="row">
+	<div  style="background-color:antiquewhite" class="row">
 		<div class="col-lg-8 col-lg-offset-2">
 			<div class="form-horizontal">
-				<div class="form-group">
+				<div id="fg1" class="form-group">
 					<?php $_CONTROL->txtSearch->Render(); ?>
 					<?php $_CONTROL->btnGo->Render(); ?>
 				</div>
@@ -11,8 +11,7 @@
 	</div>
 	<div class="row">
 		<div class="col-lg-12">
-			<h2><?php echo $_CONTROL->campaign->Name; ?>
-				<small><?php echo $_CONTROL->campaign->Description; ?></small>
+			<h2><?php echo $_CONTROL->campaign->Description; ?>
 			</h2>
 		</div>
 	</div>

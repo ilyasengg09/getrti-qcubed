@@ -20,7 +20,7 @@ if (!defined('SERVER_INSTANCE')) {
 			 * Of course, you can also feel free to remove QApplication::CheckRemoteAdmin() call on any of these pages,
 			 * which will completely ignore ALLOW_REMOTE_ADMIN altogether.
 			 */
-			define('ALLOW_REMOTE_ADMIN', false);
+			define('ALLOW_REMOTE_ADMIN', true);
 
 
 			/* Constants for Document Root (and Virtual Directories / Subfoldering)
@@ -58,9 +58,9 @@ if (!defined('SERVER_INSTANCE')) {
 			 *		__SUBDIRECTORY__ is defined as '/qcubed'
 			 *      /var/www/qcubed/wwwroot
 			 */
-			define ('__DOCROOT__', '/home/srvmdk/public_html');
-			define ('__VIRTUAL_DIRECTORY__', '/~srvmdk');
-			define ('__SUBDIRECTORY__', '/getrti-qcubed');
+			define ('__DOCROOT__', '/var/www');
+			define ('__VIRTUAL_DIRECTORY__', '');
+			define ('__SUBDIRECTORY__', '/code/getrti-saurav');
 
 			/*
 			 * These definitions will hardly change, but you may change them based on your setup
@@ -198,9 +198,9 @@ if (!defined('SERVER_INSTANCE')) {
 				'adapter' => 'MySqli5',
 				'server' => 'localhost',
 				'port' => null,
-				'database' => 'getrti',
-				'username' => 'srvmdk',
-				'password' => 'mysqlpass',
+				'database' => 'getrti_saurav',
+				'username' => 'root',
+				'password' => 'harish123',
 				'caching' => false,
 				'profiling' => false)));
 
