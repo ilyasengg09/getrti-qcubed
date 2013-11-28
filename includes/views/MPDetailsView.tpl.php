@@ -2,9 +2,7 @@
 	<?php include __VIEWS_PATH__.'/searchbox.tpl.php'; ?>
 	<div class="row">
 		<div class="col-lg-12">
-			<h2><?php echo $_CONTROL->campaign->Name; ?>
-				<small><?php echo $_CONTROL->campaign->Description; ?></small>
-			</h2>
+			<h2><?php echo $_CONTROL->campaign->Description; ?></h2>
 		</div>
 	</div>
 	<div class="row" style="margin-top:20px;">
@@ -38,7 +36,7 @@
 								<div class="panel panel-default">
 									<div class="panel-heading">
 										<h3 class="panel-title" style="margin-top: 20px; margin-bottom: 10px; font-size: 24px;" >
-											MP's Stand on <?php echo $_CONTROL->strCampaign; ?>
+											MP's Stand on <?php echo $_CONTROL->campaign->Name; ?>
 										</h3>
 									</div>
 									<div class="panel-body" style="min-height: 254px;">
@@ -65,22 +63,24 @@
 					</div>
 				</div>
 			</div>
-		<div>
-	</div>
-	<div class="row">
-		<div class="col-lg-12">
 			<div class="row">
 				<div class="col-lg-12">
-					<?php $_CONTROL->txtCommentBox->Render(); ?>
-					<?php $_CONTROL->radioVote->RenderWithName(); ?>
-					<?php $_CONTROL->btnCommentSubmit->Render(); ?><br /><br />
+					<?php $_CONTROL->lblMsg->Render(); ?>
+					<div class="row">
+						<div class="col-lg-12">
+							<?php $_CONTROL->txtCommentBox->Render(); ?>
+							<?php $_CONTROL->radioVote->RenderWithName(); ?>
+							<?php $_CONTROL->btnCommentSubmit->Render(); ?><br /><br />
+						</div>
+					</div>
+				<div class="col-lg-12">
+					<div class="row">
+						<table class="table">
+							<?php $_CONTROL->dtrComments->Render(); ?>
+						</table>
+						<div class="text-center"><?php $_CONTROL->dtrComments->Paginator->Render(); ?></div>
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<table class="table">
-					<?php $_CONTROL->dtrComments->Render(); ?>
-				</table>
-				<div class="text-center"><?php $_CONTROL->dtrComments->Paginator->Render(); ?></div>
 			</div>
 		</div>
 	</div>
