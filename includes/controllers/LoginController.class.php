@@ -162,43 +162,47 @@ class LoginController extends QPanel{
 	}
 
 	public function Form_Validate_Login(){
+		$this->lblMsg->Text = "<ul>";
+		$error = 0;
 		$t_hasher = new PasswordHash(8, false);
 		// checking all fields are filled
 		if($this->txtLogUsername->Text == "" || $this->txtLogPassword == ""){
-			$this->lblMsg->Text = "You must fill both the username and password fields.";
-			$this->lblMsg->AlertLabelMode = IAlertLabelMode::Warning;
-			$this->lblMsg->Visible = true;
-			return false;
+			$this->lblMsg->Text.= "<li>You must fill both the username and password fields.</li>";
+			$error = 1;
 		}
 		if(filter_var($this->txtLogUsername->Text, FILTER_VALIDATE_EMAIL)){
 			$user = Users::LoadByEmail($this->txtLogUsername->Text);
 			if($user == null){
-				$this->lblMsg->Text = "That didn't work. Please try again.";
-				$this->lblMsg->AlertLabelMode = IAlertLabelMode::Danger;
-				$this->lblMsg->Visible = true;
-				return false;
+				$this->lblMsg->Text.= "<li>That didn't work. Please try again.</li>";
+				$error = 1;
 			}
 			elseif($t_hasher->CheckPassword($this->txtLogPassword->Text, $user->Password)){
 				return $user;
 			}
 			else{
-				return false;
+				$this->lblMsg->Text.= "<li>That didn't work. Please try again.</li>";
+				$error = 1;
 			}
 		}
 		else{
 			$user = Users::LoadByUsername($this->txtLogUsername->Text);
 			if($user == null){
-				$this->lblMsg->Text = "That didn't work. Please try again.";
-				$this->lblMsg->AlertLabelMode = IAlertLabelMode::Danger;
-				$this->lblMsg->Visible = true;
-				return false;
+				$this->lblMsg->Text.= "<li>That didn't work. Please try again.</li>";
+				$error = 1;
+
 			}
 			elseif($t_hasher->CheckPassword($this->txtLogPassword->Text, $user->Password)){
 				return $user;
 			}
 			else{
-				return false;
+				$this->lblMsg->Text.= "<li>That didn't work. Please try again.</li>";
+				$error = 1;
 			}
+		}
+		if($error==1){
+			$this->lblMsg->Text.= "</ul>";
+			$this->lblMsg->Visible = true;
+			$this->lblMsg->AlertLabelMode = IAlertLabelMode::Danger;
 		}
 	}
 
@@ -213,8 +217,8 @@ class LoginController extends QPanel{
 			$user->Password = $hashedPassword;
 			$user->Save();
 			$this->lblMsg->Text = "Your account has been registered. Please log in.";
-			$this->lblMsg->Visible = true;
 			$this->lblMsg->AlertLabelMode = IAlertLabelMode::Success;
+			$this->lblMsg->Visible = true;
 			$this->txtRegName->Text = "";
 			$this->txtRegUsername->Text = "";
 			$this->txtRegEmail->Text = "";

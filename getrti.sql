@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 14, 2013 at 08:47 PM
+-- Generation Time: Nov 28, 2013 at 08:19 PM
 -- Server version: 5.5.34
 -- PHP Version: 5.3.10-1ubuntu3.8
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `campaigns` (
 --
 
 INSERT INTO `campaigns` (`id`, `name`, `description`, `slug`) VALUES
-(1, 'Save RTI', 'Save the RTI from amendments', 'saverti');
+(1, 'Save RTI', 'Should the parliament pass the amendments on RTI taking the political parties out of the purview of the RTI act?', 'saverti');
 
 -- --------------------------------------------------------
 
@@ -748,7 +748,7 @@ INSERT INTO `mps` (`id`, `name`, `dob`, `party`, `permanent_address`, `permanent
 (112, 'Dhruvanarayana,Shri Rangaswamy', '31 Jul 1961', 'Indian National Congress', '791, 1st Phase, Vijayanagar 4th Stage,,Mysore - 17, Karnataka', 'Tels. (0821) 2515774, 09448135658(M) ', '182, South Avenue,, New Delhi - 110 011', 'Tels. (011) 23012014, 9013180243 (M)', ' ', 112),
 (113, 'Dhurve,Smt. Jyoti', '02 Jun 1966', 'Bharatiya Janata Party', 'Chamunda Niwas, Chandrashekhar Ward,,Betul, Madhya Pradesh', 'Tel. (07141) 238465', '110, V.P. House,, New Delhi - 110 001', 'Tels. (011) 23753282, 9013180328 (M)', '(i) jyoti.dhurve@sansad.nic.in\n(ii) jyotidhurvememberofparliament@gmail.com', 113),
 (114, 'Dias,Dr. Charles', '26 Aug 1950', 'Indian National Congress', 'Tinaar Dale, Major Road,Vyttila, Cochin - 682 019,Kerala', 'Tels. (0484) 2301400, 09447209942 (M)', '120, South Avenue,, New Delhi -110 011', 'Tel. 9013180544 (M)', 'charlesdiasmp@gmail.com', 114),
-(115, 'Dikshit,Shri Sandeep', '15 Aug 1964', 'Indian National Congress', 'B-2, Nizamuddin East,New Delhi- 110 013', 'Tels. (011) 23385757\nFax.23070505', 'C-1/16, Pandara Park,, New Delhi - 110 003', 'Tels. (011) 23782963, 23782965, 23782964\n9868180538 (M)', ' ', 115),
+(115, 'Dikshit,Shri Sandeep', '15 Aug 1964', 'Indian National Congress', 'B-2, Nizamuddin East,New Delhi- 110 013', 'Tels. (011) 23385757Fax.23070505', 'C-1/16, Pandara Park,, New Delhi - 110 003', 'Tels. (011) 23782963, 23782965, 237829649868180538 (M)', 'sandeep1964@gmail.com', 115),
 (116, 'Dome,Dr. Ram Chandra', '08 Feb 1959', 'Communist Party of India (Marxist)', 'EKER Pally, Ward No. 1, P.O. Suri,,Distt. Birbhum, West Bengal', 'Tel. (03462) 255636\nFax. (03462) 255265 ', '422, V.P. House, , New Delhi - 110 001', 'Tels. (011) 23712554, 23325344\n9868180108 (M)', 'rcdom@sansad.nic.in', 116),
 (117, 'Dubey,Shri Nishikant ', '28 Jan 1969', 'Bharatiya Janata Party', '101, Ankur Apartment, Dr. Rajendra Prasad Road,,Bhagalpur, Bihar', 'Tels. (0641) 2300877, 9472292500 (M)', 'H-36, Lane-W-10C, Sainik Farms , New Delhi - 110 062', 'Tels. (011) 29552700, 9811147037 (M)', '(i) nishikant.dubey@sansad.nic.in\n(ii) nishikant.dubey.mp@gmail.com', 117),
 (118, 'Dudhgaonkar,Shri Ganeshrao Nagorao', '09 Sep 1945', 'Shiv Sena', 'AT. Post Dudhagaon, Tal, Jintur,,Distt. Parbhani\nMaharashtra - 431540', ' ', '14-E, Ferozeshah Road,, New Delhi - 110 001', 'Tels. (011) 23324347, 9013180196 (M)', '(i) dudhgaonkar.gn@sansad.nic.in\n(ii) dudhgaonkarg@gmail.com', 118),
@@ -1041,7 +1041,7 @@ INSERT INTO `mps` (`id`, `name`, `dob`, `party`, `permanent_address`, `permanent
 (403, 'Scindia,Smt. Yashodhara Raje', '19 Jun 1954', 'Bharatiya Janata Party', 'Rani Mahal, Jai Vilas Palace,,Lashkar, Gwalior ,\nMadhya Pradesh', 'Tel. (91) (751) 2435200', 'Scindia Villa,\nScindia Potteries Compound, Sarojini Nagar Ring Road,\nNew Delhi - 110 023', 'Tel. (011) 26881140', '1. yrscindia.mp@hotmail.com\n2. yr.scindia@sansad.nic.in', 403),
 (404, 'Selja,Kumari ', '24 Sep 1962', 'Indian National Congress', '87, Durrand Road,,Ambala Cantt.\nHaryana', 'Tel. (0171) 2631272', '7, Motilal Nehru Marg,, New Delhi - 110 011', 'Tels (011) 23381001, 23381390 (O) 23018074, 23018269 (R)\nFax: (011) 23381902 (O)', 'kumari.selja@sansad.nic.in', 404),
 (405, 'Semmalai,Shri S. ', '09 Jun 1945', 'All India Anna Dravida Munnetra Kazhagam', '311- 197, AzhaguVinay Nagar Street, Alagapuram,\nSalem - 636 016,\nTamil Nadu', 'Tels. (0427) 2448898\n9444104773 (M)', 'C 1/7, Tilak Lane,, New Delhi - 110 001', 'Tels. (011) 23795127\n9013180377 (M)\nFax.(011) 23034959', ' ', 405),
-(406, 'Sethi,Shri Arjun Charan', '18 Sep 1941', 'Biju Janata Dal', 'P.O. - Odang, Via - Randhiahat,,Distt. - Bhadrak - 756 135,\nOrissa', ' ', '21, Canning Lane,, New Delhi - 110 001', 'Tels. (011) 23782760, 23782745\n9868180238 (M)', '1. nama.kmm@gmail.com\n2. ac.sethi@sansad.nic.in     ', 406),
+(406, 'Sethi,Shri Arjun Charan', '18 Sep 1941', 'Biju Janata Dal', 'P.O. - Odang, Via - Randhiahat,,Distt. - Bhadrak - 756 135,\nOrissa', ' ', '21, Canning Lane,, New Delhi - 110 001', 'Tels. (011) 23782760, 23782745\n9868180238 (M)', '1. nama.kmm@gmail.com\n2. ac.sethi@sansad.nic.in     ', 406),
 (407, 'Shah,Smt. Mala Rajya Laxmi', '23 Aug 1950', 'Bharatiya Janata Party', 'The Palace,\nP.O. Narendra Nagar,,Distt. Tehri Garhwal,\nUttarakhand - 249175', 'Tels. (01378) 227231, 227235', 'Tehri Garhwal House,, 5, Bhagwan Das Road,\nNew Delhi - 110001', 'Tels. (011) 23782818, 23782816, 09411103899 (M)\nFax. (011) 23782815', ' ', 407),
 (408, 'Shanavas,Shri M. I.', '22 Sep 1951', 'Indian National Congress', 'Noorjehan Manzil,\nErnakulam North,,Cochin -682 018, Kerala.', 'Tels. (0484) 2391130\n09447122311, 9842391130, 09846122411 (M)', '77- South Avenue, New Delhi - 110 011', 'Tels. (011) 23747580, 9013180109 (M)', '1. shanavaskpcc@yahoo.co.in\n2. mi.shanavas@sansad.nic.in', 408),
 (409, 'Shantha,Smt. J.', '01 Jun 1973', 'Bharatiya Janata Party', 'Devi Nagar-II Cross Club Road,,Devi Nagar, Bellary-583101,\nKarnataka', 'Tels. (08392) 268468\n9632533199 (M)', '192, North Avenue,, New Delhi-110 001', 'Tels. (011) 26117666\n9013180317 (M)', ' ', 409),
@@ -1264,11 +1264,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(32) NOT NULL,
   `password` varchar(400) NOT NULL,
   `email` varchar(128) NOT NULL,
-  `constituency` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
-  UNIQUE KEY `email` (`email`),
-  KEY `constituency` (`constituency`)
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -1298,11 +1296,13 @@ CREATE TABLE IF NOT EXISTS `users_vote_on_campaigns` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `campaign_id` int(11) NOT NULL,
+  `constituency_id` int(11) NOT NULL,
   `vote` tinyint(1) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
-  KEY `campaign_id` (`campaign_id`)
+  KEY `campaign_id` (`campaign_id`),
+  KEY `constituency_id` (`constituency_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -1344,14 +1344,8 @@ ALTER TABLE `mps`
 -- Constraints for table `mp_stand_on_campaigns`
 --
 ALTER TABLE `mp_stand_on_campaigns`
-  ADD CONSTRAINT `mp_stand_on_campaigns_ibfk_4` FOREIGN KEY (`campaign_id`) REFERENCES `campaigns` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `mp_stand_on_campaigns_ibfk_3` FOREIGN KEY (`mp_id`) REFERENCES `mps` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`constituency`) REFERENCES `constituencies` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION;
+  ADD CONSTRAINT `mp_stand_on_campaigns_ibfk_3` FOREIGN KEY (`mp_id`) REFERENCES `mps` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `mp_stand_on_campaigns_ibfk_4` FOREIGN KEY (`campaign_id`) REFERENCES `campaigns` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `users_sessions`
@@ -1363,16 +1357,17 @@ ALTER TABLE `users_sessions`
 -- Constraints for table `users_vote_on_campaigns`
 --
 ALTER TABLE `users_vote_on_campaigns`
-  ADD CONSTRAINT `users_vote_on_campaigns_ibfk_4` FOREIGN KEY (`campaign_id`) REFERENCES `campaigns` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `users_vote_on_campaigns_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `users_vote_on_campaigns_ibfk_5` FOREIGN KEY (`constituency_id`) REFERENCES `constituencies` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `users_vote_on_campaigns_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `users_vote_on_campaigns_ibfk_4` FOREIGN KEY (`campaign_id`) REFERENCES `campaigns` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `user_comment_on_campaigns`
 --
 ALTER TABLE `user_comment_on_campaigns`
-  ADD CONSTRAINT `user_comment_on_campaigns_ibfk_6` FOREIGN KEY (`constituency_id`) REFERENCES `constituencies` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `user_comment_on_campaigns_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `user_comment_on_campaigns_ibfk_5` FOREIGN KEY (`campaign_id`) REFERENCES `campaigns` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `user_comment_on_campaigns_ibfk_5` FOREIGN KEY (`campaign_id`) REFERENCES `campaigns` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `user_comment_on_campaigns_ibfk_6` FOREIGN KEY (`constituency_id`) REFERENCES `constituencies` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
