@@ -1,10 +1,8 @@
 <div class="container">
 	<?php include __VIEWS_PATH__.'/searchbox.tpl.php'; ?>
-
 	<div class="row">
 		<div class="col-lg-12">
-			<h2><?php echo $_CONTROL->campaign->Name; ?>
-				<small><?php echo $_CONTROL->campaign->Description; ?></small>
+			<h2><?php echo $_CONTROL->campaign->Description; ?>
 			</h2>
 		</div>
 	</div>

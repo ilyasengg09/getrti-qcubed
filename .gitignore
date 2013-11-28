@@ -3,3 +3,5 @@
 nbproject
 .DS_Store
 *.orig
+includes/configuration/configuration.inc.php
+includes/configuration/custom_config.inc.php

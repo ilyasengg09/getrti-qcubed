@@ -20,7 +20,7 @@ if (!defined('SERVER_INSTANCE')) {
 			 * Of course, you can also feel free to remove QApplication::CheckRemoteAdmin() call on any of these pages,
 			 * which will completely ignore ALLOW_REMOTE_ADMIN altogether.
 			 */
-			define('ALLOW_REMOTE_ADMIN', false);
+			define('ALLOW_REMOTE_ADMIN', true);
 
 
 			/* Constants for Document Root (and Virtual Directories / Subfoldering)
