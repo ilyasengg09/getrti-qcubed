@@ -122,12 +122,15 @@ class MPDetailsController extends QPanel{
 
 			$this->dtrComments = new QDataRepeater($this);
 			$this->dtrComments->Paginator = new QPaginator($this);
-			$this->dtrComments->ItemsPerPage = 10;
+			$this->dtrComments->ItemsPerPage = 20;
 			$this->dtrComments->UseAjax = false;
 			$this->dtrComments->Template = __VIEWS_PATH__ . '/commentfeed.tpl.php';
 			$this->dtrComments->TotalItemCount = UserCommentOnCampaigns::QueryCount(QQ::Equal(QQN::UserCommentOnCampaigns()->ConstituencyId, $this->constituency->Id));
 			$this->dtrComments->DataSource = UserCommentOnCampaigns::QueryArray(QQ::Equal(QQN::UserCommentOnCampaigns()->ConstituencyId, $this->constituency->Id), QQ::Clause($this->dtrComments->LimitClause, QQ::OrderBy(QQN::UserCommentOnCampaigns()->Date, false)));
 			if($this->dtrComments->TotalItemCount == 0){
+				$this->dtrComments->Paginator->Visible = false;
+			}
+			if($this->dtrComments->TotalItemCount<=20){
 				$this->dtrComments->Paginator->Visible = false;
 			}
 
@@ -137,6 +140,7 @@ class MPDetailsController extends QPanel{
 			$this->txtCommentBox->TextMode = QTextMode::MultiLine;
 			$this->txtCommentBox->Rows = 3;
 			$this->txtCommentBox->Placeholder = "Type here to let your MP know your views on this issue";
+			$this->txtCommentBox->SetCustomStyle('margin','30px 0px 10px 0px');
 			if(isset($_SESSION['comment'])){
 				$this->txtCommentBox->Text = $_SESSION['comment'];
 				unset($_SESSION['comment']);

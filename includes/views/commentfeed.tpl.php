@@ -4,7 +4,7 @@
 		<?php
 			$imgSize = 50;
 			$imgDefault = "http://getrti.co.in/assets/images/default-avatar.png";
-			$grav_url = "http://www.gravatar.com/avatar/" . md5(strtolower(trim($_ITEM->User->Email))) . "?d=" . urlencode($imgDefault) . "&s=" . $imgSize;
+			$grav_url = "http://www.gravatar.com/avatar/" . md5(strtolower(trim($_ITEM->User->Email))) . "?d=identicon" . "&s=" . $imgSize;
 			echo "<img src='".$grav_url."'/>";
 		?>
 	</td>
