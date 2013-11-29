@@ -6,6 +6,7 @@
 	<link href="<?php echo __SM_SITE_ABSOLUTE__ADDRESS__.__APP_CSS_ASSETS__; ?>/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="<?php echo __SM_SITE_ABSOLUTE__ADDRESS__.__APP_CSS_ASSETS__; ?>/app.css" rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+	<script src="<?php echo __SM_SITE_ABSOLUTE__ADDRESS__.__APP_JS_ASSETS__; ?>/Chart.js"></script>
 </head>
 <body>
 <?php $this->RenderBegin(); ?>

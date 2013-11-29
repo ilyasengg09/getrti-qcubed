@@ -27,8 +27,8 @@ class MPDetailsController extends QPanel{
 
 	public $lblMpStand;
 
-	public $lblConstituencyFor;
-	public $lblConstituencyAgainst;
+	public $strConstituencyFor;
+	public $strConstituencyAgainst;
 
 	public $dtrComments;
 
@@ -101,9 +101,6 @@ class MPDetailsController extends QPanel{
 
 			// constituency stats
 
-			$this->lblConstituencyFor = new QLabel($this);
-			$this->lblConstituencyAgainst = new QLabel($this);
-
 			$noPeopleFor = 0;
 			$noPeopleAgainst = 0;
 			$votes = UsersVoteOnCampaigns::LoadArrayByConstituencyId($this->constituency->Id);
@@ -115,8 +112,8 @@ class MPDetailsController extends QPanel{
 					$noPeopleAgainst++;
 				}
 			}
-			$this->lblConstituencyFor->Text = $noPeopleFor;
-			$this->lblConstituencyAgainst->Text = $noPeopleAgainst;
+			$this->strConstituencyFor = $noPeopleFor;
+			$this->strConstituencyAgainst = $noPeopleAgainst;
 
 			// comments
 

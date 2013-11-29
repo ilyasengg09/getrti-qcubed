@@ -16,10 +16,41 @@
 					<h3 class="panel-title">MPs' Stand on <?php echo $_CONTROL->campaign->Name; ?></h3></h3>
 				</div>
 				<div class="panel-body">
-					<div class="col-lg-8 col-lg-offset-4">
-						<?php $_CONTROL->lblMpFor->Render(); ?> <p class="text-success">FOR</p>
-						<?php $_CONTROL->lblMpAgainst->Render(); ?> <p class="text-danger">AGAINST</p>
-						<?php $_CONTROL->lblMpUndecided->Render(); ?> <p>UNDECIDED</p>
+					<div class="row">
+						<div class="col-lg-4">
+							<h2 class="text-success"><?php echo $_CONTROL->strMpFor; ?> <small>FOR</small></h2>
+						</div>
+						<div class="col-lg-4">
+							<h2 class="text-danger"><?php echo $_CONTROL->strMpAgainst; ?> <small>AGAINST</small></h2>
+						</div>
+						<div class="col-lg-4">
+							<h2><?php echo $_CONTROL->strMpUndecided; ?> <small>UNDECIDED</small></h2>
+						</div>
+					</div>
+					<div class="row">
+						<div class="graph col-lg-12">
+							<canvas id="canvasmp" width="350" height="350" class="col-lg-offset-2"></canvas>
+						</div>
+						<script>
+							var pieDataMp = [
+								{
+									// undecided
+									value: <?php echo $_CONTROL->strMpUndecided; ?>,
+									color:"#808080"
+								},
+								{
+									// for
+									value : <?php echo $_CONTROL->strMpFor; ?>,
+									color : "#009933"
+								},
+								{
+									// against
+									value : <?php echo $_CONTROL->strMpAgainst; ?> ,
+									color : "#CC3300"
+								}
+								];
+							var myPieMp = new Chart(document.getElementById("canvasmp").getContext("2d")).Pie(pieDataMp);
+						</script>
 					</div>
 				</div>
 			</div>
@@ -30,12 +61,33 @@
 					<h3 class="panel-title">Users' Stand on <?php echo $_CONTROL->campaign->Name; ?></h3>
 				</div>
 				<div class="panel-body">
-					<div class="col-lg-8 col-lg-offset-4">
-						<br />
-						<?php $_CONTROL->lblUsersFor->Render(); ?> <p class="text-success">FOR</p>
-						<br />
-						<?php $_CONTROL->lblUsersAgainst->Render(); ?> <p class="text-danger">AGAINST</p>
-						<br />
+					<div class="row">
+						<div class="col-lg-6">
+							<h2 class="text-success"><?php echo $_CONTROL->strUsersFor; ?> <small>FOR</small></h2>
+						</div>
+						<div class="col-lg-6">
+							<h2 class="text-danger"><?php echo $_CONTROL->strUsersAgainst; ?> <small>AGAINST</small></h2>
+						</div>
+					</div>
+					<div class="row">
+						<div class="graph col-lg-12">
+							<canvas id="canvasusers" width="350" height="350" class="col-lg-offset-2"></canvas>
+						</div>
+						<script>
+							var pieDataUsers = [
+								{
+									// for
+									value : <?php echo $_CONTROL->strUsersFor; ?>,
+									color : "#009933"
+								},
+								{
+									// against
+									value : <?php echo $_CONTROL->strUsersAgainst; ?> ,
+									color : "#CC3300"
+								}
+							];
+							var myPieUsers = new Chart(document.getElementById("canvasusers").getContext("2d")).Pie(pieDataUsers);
+						</script>
 					</div>
 				</div>
 			</div>

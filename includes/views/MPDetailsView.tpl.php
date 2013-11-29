@@ -2,9 +2,7 @@
 
 	<div class="row">
 		<div class="col-lg-12">
-			<h2 style="
-    font-weight: bold;
-"><?php echo $_CONTROL->campaign->Description; ?></h2>
+			<h2 style="font-weight: bold;"><?php echo $_CONTROL->campaign->Description; ?></h2>
 		</div>
 	</div>
 	<div class="row" style="margin-top:20px;">
@@ -55,9 +53,33 @@
 									</h3>
 								</div>
 								<div  class="panel-body" style="min-height:250px;">
-									<div class="col-lg-10 col-lg-offset-4">
-										<h1><?php $_CONTROL->lblConstituencyFor->Render(); ?></h1> <p class="text-success">FOR</p>
-										<h1><?php $_CONTROL->lblConstituencyAgainst->Render(); ?></h1> <p class="text-danger">AGAINST</p>
+									<div class="row">
+										<div class="col-lg-6">
+											<h3 class="text-success"><?php echo $_CONTROL->strConstituencyFor; ?> <small>FOR</small></h3>
+										</div>
+										<div class="col-lg-6">
+											<h3 class="text-danger"><?php echo $_CONTROL->strConstituencyAgainst; ?> <small>AGAINST</small></h3>
+										</div>
+									</div>
+									<div class="row">
+										<div class="graph col-lg-12">
+											<canvas id="canvasusers"></canvas>
+										</div>
+										<script>
+											var pieDataUsers = [
+												{
+													// for
+													value : <?php echo $_CONTROL->strConstituencyFor; ?>,
+													color : "#009933"
+												},
+												{
+													// against
+													value : <?php echo $_CONTROL->strConstituencyAgainst; ?>,
+													color : "#CC3300"
+												}
+											];
+											var myPieUsers = new Chart(document.getElementById("canvasusers").getContext("2d")).Pie(pieDataUsers);
+										</script>
 									</div>
 								</div>
 							</div>
