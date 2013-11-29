@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 28, 2013 at 08:19 PM
+-- Generation Time: Nov 29, 2013 at 09:54 PM
 -- Server version: 5.5.34
 -- PHP Version: 5.3.10-1ubuntu3.8
 
@@ -39,8 +39,8 @@ CREATE TABLE IF NOT EXISTS `campaigns` (
 -- Dumping data for table `campaigns`
 --
 
-INSERT INTO `campaigns` (`id`, `name`, `description`, `slug`) VALUES
-(1, 'Save RTI', 'Should the parliament pass the amendments on RTI taking the political parties out of the purview of the RTI act?', 'saverti');
+REPLACE INTO `campaigns` (`id`, `name`, `description`, `slug`) VALUES
+(1, 'RTI (Amendment) Bill', ' Should the parliament pass the RTI Amendment Bill? <br />Tell your MP', 'saverti');
 
 -- --------------------------------------------------------
 
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `constituencies` (
 -- Dumping data for table `constituencies`
 --
 
-INSERT INTO `constituencies` (`id`, `name`, `state`) VALUES
+REPLACE INTO `constituencies` (`id`, `name`, `state`) VALUES
 (1, 'Theni ', 32),
 (2, 'Vellore ', 32),
 (3, 'Srinagar ', 15),
@@ -633,7 +633,7 @@ CREATE TABLE IF NOT EXISTS `mps` (
 -- Dumping data for table `mps`
 --
 
-INSERT INTO `mps` (`id`, `name`, `dob`, `party`, `permanent_address`, `permanent_phone`, `delhi_address`, `delhi_phone`, `email`, `constituency`) VALUES
+REPLACE INTO `mps` (`id`, `name`, `dob`, `party`, `permanent_address`, `permanent_phone`, `delhi_address`, `delhi_phone`, `email`, `constituency`) VALUES
 (1, 'Aaroon Rasheed,Shri J.M.', '13 May 1950', 'Indian National Congress', '(i) 7, VRC Road, Street - I,Teynampet, Chennai - 600 002 Tamil Nadu', 'Tels.(044) 28156283, 09444048611(M)', '3, Mahadev Road,, New Delhi - 110 001', 'Tel. (011) 23355101, Fax. (011) 23355102\n9868180133 (M)', 'jm.aaronrasheed@sansad.nic.in', 1),
 (2, 'Abdul Rahman,Shri ', '28 May 1959', 'Dravida Munnetra Kazhagam', 'No. 6, Scheme Road, Silver Scheme Building,,Mahalingapuram,Chennai - 600 034 Tamil Nadu', 'Tels. (044) 28171786 (R),09442178655 (M)', '189, North Avenue,, New Delhi - 110 001', 'Tels. (011) 23093029 9013180160 (M)', 'rahmanexec@yahoo.com', 2),
 (3, 'Abdullah,Dr. Farooq', '21 Oct 1937', 'Jammu and Kashmir National Conference', '40, Gupkar Road,Srinagar,\nJammu & Kashmir', 'Tel. (0194) 2452540\nFax. (0194) 2452120 ', '11, Teen Murti Lane,, New Delhi - 110 011', 'Tels. (011) 24360774, 24361193, 24360396 (O),\n23795282 (R), 09868181158 (M)\nFax. (011) 24362554 (O), 23013722 (R)', 'farooq_abdullah@rediffmail.com', 3),
@@ -748,7 +748,7 @@ INSERT INTO `mps` (`id`, `name`, `dob`, `party`, `permanent_address`, `permanent
 (112, 'Dhruvanarayana,Shri Rangaswamy', '31 Jul 1961', 'Indian National Congress', '791, 1st Phase, Vijayanagar 4th Stage,,Mysore - 17, Karnataka', 'Tels. (0821) 2515774, 09448135658(M) ', '182, South Avenue,, New Delhi - 110 011', 'Tels. (011) 23012014, 9013180243 (M)', ' ', 112),
 (113, 'Dhurve,Smt. Jyoti', '02 Jun 1966', 'Bharatiya Janata Party', 'Chamunda Niwas, Chandrashekhar Ward,,Betul, Madhya Pradesh', 'Tel. (07141) 238465', '110, V.P. House,, New Delhi - 110 001', 'Tels. (011) 23753282, 9013180328 (M)', '(i) jyoti.dhurve@sansad.nic.in\n(ii) jyotidhurvememberofparliament@gmail.com', 113),
 (114, 'Dias,Dr. Charles', '26 Aug 1950', 'Indian National Congress', 'Tinaar Dale, Major Road,Vyttila, Cochin - 682 019,Kerala', 'Tels. (0484) 2301400, 09447209942 (M)', '120, South Avenue,, New Delhi -110 011', 'Tel. 9013180544 (M)', 'charlesdiasmp@gmail.com', 114),
-(115, 'Dikshit,Shri Sandeep', '15 Aug 1964', 'Indian National Congress', 'B-2, Nizamuddin East,New Delhi- 110 013', 'Tels. (011) 23385757Fax.23070505', 'C-1/16, Pandara Park,, New Delhi - 110 003', 'Tels. (011) 23782963, 23782965, 237829649868180538 (M)', 'sandeep1964@gmail.com', 115),
+(115, 'Dikshit,Shri Sandeep', '15 Aug 1964', 'Indian National Congress', 'B-2, Nizamuddin East,New Delhi- 110 013', 'Tels. (011) 23385757Fax.23070505', 'C-1/16, Pandara Park,, New Delhi - 110 003', 'Tels. (011) 23782963, 23782965, 23782964, 9868180538 (M)', 'sandeep1964@gmail.com', 115),
 (116, 'Dome,Dr. Ram Chandra', '08 Feb 1959', 'Communist Party of India (Marxist)', 'EKER Pally, Ward No. 1, P.O. Suri,,Distt. Birbhum, West Bengal', 'Tel. (03462) 255636\nFax. (03462) 255265 ', '422, V.P. House, , New Delhi - 110 001', 'Tels. (011) 23712554, 23325344\n9868180108 (M)', 'rcdom@sansad.nic.in', 116),
 (117, 'Dubey,Shri Nishikant ', '28 Jan 1969', 'Bharatiya Janata Party', '101, Ankur Apartment, Dr. Rajendra Prasad Road,,Bhagalpur, Bihar', 'Tels. (0641) 2300877, 9472292500 (M)', 'H-36, Lane-W-10C, Sainik Farms , New Delhi - 110 062', 'Tels. (011) 29552700, 9811147037 (M)', '(i) nishikant.dubey@sansad.nic.in\n(ii) nishikant.dubey.mp@gmail.com', 117),
 (118, 'Dudhgaonkar,Shri Ganeshrao Nagorao', '09 Sep 1945', 'Shiv Sena', 'AT. Post Dudhagaon, Tal, Jintur,,Distt. Parbhani\nMaharashtra - 431540', ' ', '14-E, Ferozeshah Road,, New Delhi - 110 001', 'Tels. (011) 23324347, 9013180196 (M)', '(i) dudhgaonkar.gn@sansad.nic.in\n(ii) dudhgaonkarg@gmail.com', 118),
@@ -794,7 +794,7 @@ INSERT INTO `mps` (`id`, `name`, `dob`, `party`, `permanent_address`, `permanent
 (158, 'Islam,Shri Sk. Nurul', '11 Nov 1963', 'All India Trinamool Congress', 'Vill. & P.O. Bahera,\nP.S. Barasat,Distt. North 24 Pargana,\nWest Bengal', 'Tels. 0964706073 (M)', '180, South Avenue,, New Delhi - 110 011', 'Tels. (011) 23795185, 9013180286 (M)', ' ', 158),
 (159, 'Jadhav ,Shri Baliram Sukur', '02 Jun 1956', 'Bahujan Vikas Aaghadi', 'Vill. & P.O. Saiwan, Tal.Vasai,,Distt. Thane - 401 303,\nMaharashtra', 'Tels. (0250) 2251076, 09420614565(M)', '173, North Avenue, New Delhi - 110 001', 'Tels. (011) 23093867, 23093869\n09013180310 (M)\nFax: (011) 23012164', 'baliramsjadhav@gmail.com', 159),
 (160, 'Jadhav,Shri Prataprao Ganpatrao', '25 Nov 1960', 'Shiv Sena', '"Matoshri". Shivaji Nagar, Mehkar,,Distt. Buldhana,\nMaharashtra', 'Tels. (07268) 225277, 225377, 244780\n09423145111', '6, South Avenue,, New Delhi - 110 011', 'Telefax. (011) 23012164, 09822477111, 9013180204 (M)', ' ', 160);
-INSERT INTO `mps` (`id`, `name`, `dob`, `party`, `permanent_address`, `permanent_phone`, `delhi_address`, `delhi_phone`, `email`, `constituency`) VALUES
+REPLACE INTO `mps` (`id`, `name`, `dob`, `party`, `permanent_address`, `permanent_phone`, `delhi_address`, `delhi_phone`, `email`, `constituency`) VALUES
 (161, 'Jagannath,Dr. M.', '22 May 1951', 'Indian National Congress', 'H. No. 17-1-382/V/2/11, Vaishali Nagar Colony,\nChampapet,,Hyderabad - 500 079, Andhra Pradesh', 'Tels. (040) 24078990, 24075280, 24078881', '9, Ferozeshah Road,, New Delhi - 110 001', 'Tels. (011) 23782769, 9013180050 (M), 9440297979 (M)', 'jagannath.m@sansad.nic.in', 161),
 (162, 'Jagathrakshakan,Shri S.', '06 Feb 1948', 'Dravida Munnetra Kazhagam', '1, First Main Road, Kasthuribainagar,,Adyar, Chennai - 600 020\nTamil Nadu', 'Tels.(044) 24913113\nFax: (044) 8228776', '83, Lodhi Estate,, New Delhi - 110 003', 'Tels. (011) 23384214, 23384597, 23385583 (O)\nTelefax. (011) 24645883\nFax. (011) 24645884 (R) ', ' ', 162),
 (163, 'Jahan,Smt. Kaisar ', ' ', 'Bahujan Samaj Party', 'Moholla Sheikh Tola,\nLaharpur, Distt. Sitapur,,Uttar Pradesh', 'Tels. (05862) 254207\n9453023311 (M)', '38, South Avenue,, New Delhi - 100 011', 'Tels. (011) 23795372, 09013180090 (M)', ' ', 163),
@@ -833,7 +833,7 @@ INSERT INTO `mps` (`id`, `name`, `dob`, `party`, `permanent_address`, `permanent
 (196, 'Katheria,Shri Premdas', '10 Jan 1965', 'Samajwadi Party', 'Panchavali Chauraha, Friends Colony, Etawah, Village+P.O. - Bijauli,Distt. - Etawah, Uttar Pradesh', 'Tels. (05688) 265540', '118, North Avenue,, New Delhi - 110 001', 'Tel. 9013180165 (M)', ' ', 196),
 (197, 'Katoch,Smt. Chandresh Kumari', '01 Feb 1944', 'Indian National Congress', 'S - 43, Greater Kailash, Part - I,,New Delhi', ' ', 'S - 43, Greater Kailash, Part - I,, New Delhi', 'Tels. (011) 23381539, 23386765 (O)\nTelefax. (011) 29231921 (R), 9013180307 (M), 9811913543 (M)\nFax. (011) 23385115 (O)', '(i) chandresh.kumari@sansad.nic.in\n(ii) chandreshkumarimp@gmail.com', 197),
 (198, 'Katti,Shri Ramesh Vishwanath', '21 Oct 1964', 'Bharatiya Janata Party', 'At & P.O. Bellada Bagewadi,Chikkodi Taluk,\nDistt. Belgaum-591305,\nKarnataka', 'Tel. (08333) 267043 (R)', '42, South Avenue, New Delhi - 110011', 'Tels. 09448112151, 9013180180 (M)', 'ramesh.katti@sansad.nic.in', 198),
-(199, 'Kaur,Smt. Preneet', '03 Oct 1944', 'Indian National Congress', 'New Moti Bagh Palace,,Patiala - 147 001, Punjab', 'Tel. (0175) 220550\nFax: (0175) 216201', '85, Lodhi Estate,, New Delhi - 110 003', 'Tels. (011) 24616585 (R), 23011141, 23014070 (O)\nTelefax. (011) 24633617 (R)\nFax: (011) 24616584 (R), 23011425 (O), 9810456705 (M)', 'preneet@sansad.nic.in', 199),
+(199, 'Kaur,Smt. Preneet', '03 Oct 1944', 'Indian National Congress', 'New Moti Bagh Palace,,Patiala - 147 001, Punjab', 'Tel. (0175) 220550Fax: (0175) 216201', '85, Lodhi Estate,, New Delhi - 110 003', 'Tels. (011) 24616585 (R), 23011141, 23014070 (O)Telefax. (011) 24633617 (R)Fax: (011) 24616584 (R), 23011425 (O), 9810456705 (M)', 'preneet@sansad.nic.in, osddycmpunjab@gmail.com', 199),
 (200, 'Kaypee,Shri Mohinder Singh', '07 Nov 1956', 'Indian National Congress', '1, Mithapur Road, Model Town,,Jalandhar, Punjab', 'Tel.9814209688 (M)', '4 A, Telegraph Lane, , New Delhi - 110 001', 'Tels. (011) 23352379\n9815938333, 9013180446 (M)', 'mohinder.sk@sansad.nic.in', 200),
 (201, 'Khaire,Shri Chandrakant Bhaurao', '01 Jan 1952', 'Shiv Sena', '`Khaire Niwas`, Swatantra Sainik Bhaurao Bhaguji Khaire Marg, ,Machali Khadak, Sambhaji Nagar, Aurangabad - 431 001, Maharashtra', 'Tels. (0240) 2331125, 2331225\nFax. (0240) 2331225', '2, Teen Murti Lane,, New Delhi - 110 011', 'Telefax: (011) 23013525', 'cb.khaire@sansad.nic.in', 201),
 (202, 'Khan,Shri Hassan', '11 Dec 1936', 'Independent', 'Nunkun House, Kargil,,Ladakh, Jammu and Kashmir', 'Tel. (01982) 233485, 09419176712 (M)', '16/18, South Avenue,, New Delhi - 110 011', 'Tels. 9013180270 (M), 9419176712 (M)', '(i) mpkhanladakh@yahoo.com\n(ii) hassankhan@sansad.nic.in', 202),
@@ -950,7 +950,7 @@ INSERT INTO `mps` (`id`, `name`, `dob`, `party`, `permanent_address`, `permanent
 (313, 'Patel,Shri Dinsha J.', '25 May 1937', 'Indian National Congress', '17/B, Amrakunj Society, Vithalbhai Patel Road,Nadiad, Distt. Kheda - 387 001\nGujarat', 'Tel. (0268) 2522220\nFax. (0268) 2521200', '11-A, Pandit Pant Marg,, New Delhi - 110 001', 'Tels. (011) 23388121, 23381280 (O)\nTelefax: (011) 23738329 (R)\nFax. (011) 23383011 (O)', 'dinsha@sansad.nic.in', 313),
 (314, 'Patel,Smt. Jayshreeben ', '22 Jun 1959', 'Bharatiya Janata Party', '41, Neelkanth Society, Behind Rajkamal Petrol Pump,Mehesana-384002, Gujarat', 'Telefax - (02762) 248880', '212, North Avenue,, New Delhi - 110 001', 'Tels. (011) 23093295, 9013180321, 09428518880 (M)\nFax. (011) 24673665', '1. jkpatelgujarat@gmail.com\n2. jk.patel@sansad.nic.in', 314),
 (315, 'Patel,Shri Kishanbhai Vestabhai', '02 Jun 1964', 'Indian National Congress', 'At & P.O. Kangvi,Teh.Dharampur,,Distt. Valsad (Gujarat)', '(02633)240004,240605,\n241124 (O)', '144-146, South Avenue,, New Delhi-110 011', 'Tels. (011) 23795062, 23795040, 9868180324(M)', 'kv.patel@sansad.nic.in', 315);
-INSERT INTO `mps` (`id`, `name`, `dob`, `party`, `permanent_address`, `permanent_phone`, `delhi_address`, `delhi_phone`, `email`, `constituency`) VALUES
+REPLACE INTO `mps` (`id`, `name`, `dob`, `party`, `permanent_address`, `permanent_phone`, `delhi_address`, `delhi_phone`, `email`, `constituency`) VALUES
 (316, 'Patel,Shri Lalubhai Babubhai', '31 Aug 1955', 'Bharatiya Janata Party', 'Sabri Kutir, Dungri Falia, Kachigam, Nani Daman,,Daman & Diu, (UT).', 'Tels. (0260) 2992444, 09825122858 (M)\nFax. (0260) 2243177', '123, South Avenue,, New Delhi - 110 001', 'Tel. 9013180345 (M)', 'damanmp@hotmail.com', 316),
 (317, 'Patel,Shri Natubhai Gomanbhai', '04 May 1972', 'Bharatiya Janata Party', 'Plot No. 31, Yogi Sadan, Opp. Silvassa Police Station,Dadra and Nagar Haveli', 'Telfax. (0260) 2632905', '110, South Avenue,, New Delhi - 110 011', 'Tels. (011) 23795358, 9898996605 (M) (M)\nFax. (011) 23795358', 'dnhmp2009@gmail.com', 317),
 (318, 'Patel,Shri Praful Manoharbhai', '17 Feb 1957', 'Nationalist Congress Party', 'Ceejay House, 12th Floor,\nDr. Anne Besant Road,,Worli, Mumbai - 400 018\nMaharashtra', 'Tel. (022) 67122727\nFax. (022) 66104483', '26, G.R.G. Road,, New Delhi - 110 001', 'Tels. (011) 23061782, 23061339 (O), 23712317, 23717980 (R)\nFax. (011) 23062552 (O), 23713344 (R)', ' ', 318),
@@ -1060,7 +1060,7 @@ INSERT INTO `mps` (`id`, `name`, `dob`, `party`, `permanent_address`, `permanent
 (422, 'Shukla ,Shri Balkrishna Khanderao ', '11 Sep 1963', 'Bharatiya Janata Party', '`` Ashirvad``, Painter Tanajislane,,Siddhhnath Road, Vododara - 390 001\nGujarat', 'Tels. (0265) 2415890\n09879515128 (M)', '109, South Avenue,, New Delhi - 110 011', 'Tels. (011) 23013812, 23013814\n9013180228 (M)', 'Shukla.bk@sansad.nic.in, balu@balushukla.com, balu_baroda@yahoo.com', 422),
 (423, 'Sibal,Shri Kapil', '08 Aug 1948', 'Indian National Congress', 'C-1, Maharani Bagh,,New Delhi - 110 065', 'Tel. (011) 26830452', '19, Teen Murti Marg,, New Delhi - 110 011', 'Tels. (011) 23739191 (IT), 23724320 (O) 23019420, 23019421 (R)\nFax (011) 23710445 (O) 23018705 (R)', 'kapilsibal@hotmail.com', 423),
 (424, 'Siddeshwara,Shri Gowdar Mallikarjunappa', '05 Jul 1952', 'Bharatiya Janata Party', '``GEM`` House, Main Road,Bheemasamudra, Distt. Chitradurga - 577520, Karnataka', 'Tels. (08194) 262017, 262022, 09448161799, (M)\nFax: (08194) 262122 ', '166, South Avenue,, New Delhi - 110 011', 'Tels. (011) 23795999\n9868180264 (M)', ' ', 424),
-(425, 'Sidhu,Shri Navjot Singh', '20 Oct 1963', 'Bharatiya Janata Party', '26, Yadavmdra Colony, Mall Road,Patiala\nPunjab', 'Tel. (0175) 2212126', 'C-1/20, Humayun Road,, New Delhi-110 003', 'Tels.(011) 24636244, 09868180404 (M)', 'navjotsingh.sidhu@sansad.nic.in', 425),
+(425, 'Sidhu,Shri Navjot Singh', '20 Oct 1963', 'Bharatiya Janata Party', '26, Yadavmdra Colony, Mall Road,PatialaPunjab', 'Tel. (0175) 2212126', 'C-1/20, Humayun Road,, New Delhi-110 003', 'Tels.(011) 24636244, 09868180404 (M) 9971611977', 'navjotsingh.sidhu@sansad.nic.in', 425),
 (426, 'Singh,Shri Ajit', '12 Feb 1939', 'Rashtriya Lok Dal', '244/2, Shivaji Road, Meerut - 220001,Uttar Pradesh', ' ', '12, Tughlak Road,, New Delhi - 110 011', 'Tels. (011) 24610350, 24632991 (O) 23792040, 23792080 (R)\nFax. (011) 24610354 (O) 23792037 (R)', 'ajits@sansad.nic.in', 426),
 (427, 'Singh,Dr. Bhola', '03 Jan 1939', 'Bharatiya Janata Party', 'Vill & P.O- Dunhi, Via- Garhpura,,Distt. Begusarai, Bihar', 'Tels. (06243) 212201, 09431800657 (M)', 'A - 1, M. S. Flats,, B. K. S. Marg, New Delhi - 110 001', 'Tels. (011) 23752628, 9013180370 (M)', ' ', 427),
 (428, 'Singh,Shri Bhoopendra ', '20 May 1960', 'Bharatiya Janata Party', 'Bamora, P.O. - Gambhirya, Teh. Sagar, ,Distt. - Sagar - 470111, Madhya Pradesh', 'Tels. (07582) 262688, 9425171211 (M)', '69, North Avenue,, New Delhi - 110 001', 'Tels. 9013180155 (M)', 'bhoopendra.singh@sansad.nic.in', 428),
@@ -1084,7 +1084,7 @@ INSERT INTO `mps` (`id`, `name`, `dob`, `party`, `permanent_address`, `permanent
 (446, 'Singh,Smt. Pratibha', ' ', 'Indian National Congress', ' ', ' ', ' ', ' ', ' ', 446),
 (447, 'Singh,Shri Radha Mohan', '01 Sep 1949', 'Bharatiya Janata Party', 'Gandhi Complex, Station Road, Motihari,,Distt. East Champaran - 845 401, Bihar', 'Tels. (06252) 241210, 09431233001 (M), 9431815551 (M)', '94-96, North Avenue,, New Delhi - 110 001', 'Tels. (011) 23092025, 9013180251 (M)\nFax. (011) 23093225', 'rmsingh@sansad.nic.in', 447),
 (448, 'Singh,Shri Radhe Mohan', '03 Apr 1967', 'Samajwadi Party', 'Village+P.O. - Karampur, P.S. - Khanpur,,Distt. - Ghazipur, Uttar Pradesh', 'Tel. 09918400415 (M)', '215, North Avenue,, New Delhi - 110 001', 'Tel. 9013180341 (M)', ' ', 448),
-(449, 'Singh,Dr. Raghuvansh Prasad', '06 Jun 1946', 'Rashtriya Janata Dal', 'Vill. Panapur Shahpur,\nP.O. Lavapur Narayan,Distt. Vaishali\nBihar', ' ', '8, Ashoka Road,, New Delhi - 110 001', 'Tels. (011) 23386093, 23383975 ', 'singhrp@sansad.nic.in', 449),
+(449, 'Singh,Dr. Raghuvansh Prasad', '06 Jun 1946', 'Rashtriya Janata Dal', 'Vill. Panapur Shahpur,P.O. Lavapur Narayan,Distt. VaishaliBihar', ' 23782099', '8, Ashoka Road,, New Delhi - 110 001', 'Tels. (011) 23386093, 23383975 ', 'singhrp@sansad.nic.in', 449),
 (450, 'Singh, Smt. Rajesh Nandini', '23 Mar 1957', 'Indian National Congress', 'Village+P.O. - Rajendragram,,Distt. - Anuppur - 484 881, Madhya Pradesh', 'Tels. (07629) 268633, 9425809698 (M)', 'W - 18, Green Park (Main),, New Delhi - 110 016', 'Tels. (011) 26850526, 9013180540 (M), 9810527957 (M)', ' ', 450),
 (451, 'Singh,Shri Rajiv Ranjan (Lalan)', '24 Jan 1955', 'Janata Dal (United) ', 'B-85, Budha Colony ,Patna - 800 001, Bihar', 'Tels. (0612) 2523628, 0943182185', 'C-1/15, Pandara Park,, New Delhi - 110 003', 'Tels. (011) 23782252, 23782251, 9868180504 (M)\nFax. (011) 23782251', 'lalanrrsingh@yahoo.co.in', 451),
 (452, 'Singh,Shri Rajnath', '10 Jul 1951', 'Bharatiya Janata Party', '04, Kalidas Marg,,Lucknow, Uttar Pradesh', 'Tel. (0522) 2236338', '38, Ashoka Road, New Delhi - 110 001', 'Tels. (011) 23354184, 23353881', '38ashokroad@gmail.com', 452),
@@ -1110,7 +1110,7 @@ INSERT INTO `mps` (`id`, `name`, `dob`, `party`, `permanent_address`, `permanent
 (472, 'Solanki,Shri Bharatsinh Madhavsinh', '26 Nov 1953', 'Indian National Congress', 'At. & P.O. Dedarda,Ta. Borsad\nDistt. Anand\nGujarat', 'Tel. (02696) 220258\nFax. (02696) 221343', '6, K. Kamraj Lane,, New Delhi - 110001', 'Tels. (011) 23015382, 23015383 (R)\nFax: (011) 23015385 (R)\n8130906333 (M)\nFax. (011) 23015385 (R),', ' ', 472),
 (473, 'Solanki ,Shri Dinubhai Boghabhai', '09 Feb 1957', 'Bharatiya Janata Party', '`Manghar`, Devli Road,\nKodinar, Tal. Kodinar,Distt. Junagarh - 362720\nGujarat', 'Tels. (02795) 220101, 220111\nFax.(02795) 223138', '18, North Avenue,, New Delhi - 110001', 'Tels. 09824402727, 9013180209 (M)', ' ', 473),
 (474, 'Solanki,Dr. Kirit Premjibhai', '17 Jun 1950', 'Bharatiya Janata Party', 'Chirag Bungalow 11, Kirtan Society,\nNr. 132 Ft. Ring Road, Ranip Cross Road, ,Ahmedabad, Gujarat', 'Tels. (079) 27520506, 09925004644 (M)\nFax. (079) 27550075', '133, South Avenue,, New Delhi - 110 011', 'Tels. (011) 23795335, 23795183, 9013180144 (M)', '(i) kirit.solanki@sansad.nic.in\n(ii) drkiritsolanki@yahoo.co.in\n(iii) mpkiritsolanki@yahoo.co.in', 474);
-INSERT INTO `mps` (`id`, `name`, `dob`, `party`, `permanent_address`, `permanent_phone`, `delhi_address`, `delhi_phone`, `email`, `constituency`) VALUES
+REPLACE INTO `mps` (`id`, `name`, `dob`, `party`, `permanent_address`, `permanent_phone`, `delhi_address`, `delhi_phone`, `email`, `constituency`) VALUES
 (475, 'Solanki,Shri Makhansingh', '01 Mar 1952', 'Bharatiya Janata Party', 'Zila Panchayat Parisar,\nDistt. Badwani,,Madhya Pradesh', 'Tels. 09425449875, 09165419699 (M)', '313, V. P. House,, New Delhi - 110 001', 'Tel. 9013180311 (M)', ' ', 475),
 (476, 'Soren,Shri Shibu', '11 Jan 1944', 'Jharkhand Mukti Morcha', '14, Sector 1 - C, P.O. Ram Mandir,,Bokaro Steel City Thana, Bokaro, Jharkhand', ' ', '224, North Avenue,, New Delhi - 110 001', 'Tels. (011) 23093857, 23093861', 'shisoren@sansad.nic.in', 476),
 (477, 'Sudhakaran,Shri Kumbakudi', '11 May 1948', 'Indian National Congress', 'Lal Vihar, P.O. Kizhunna,,Distt. Kannur - 670 007, Kerala ', 'Tels. (04972) 2701300, 09447129130 (M)', 'B - 502, M.S. Flats, B.K.S. Marg,, New Delhi - 110 001', 'Telefax. (011) 23752726\n9013180322, 9717148103 (M)', '1. knrsudhakaran@yahoo.co.in\n2. k.sudhakaran@sansad.nic.in', 477),
@@ -1145,7 +1145,7 @@ INSERT INTO `mps` (`id`, `name`, `dob`, `party`, `permanent_address`, `permanent
 (506, 'Tiwari ,Shri Bhismshankar Alias Kushal', '30 Sep 1960', 'Bahujan Samaj Party', 'Vill. & Post Tanda, P.S. Barahalganj,,Distt. Gorakhpur, Uttar Pradesh.', 'Tels. (05547) 223309, 09452349999 (M)', '33-35, South Avenue,, New Delhi - 110 011', 'Tel. (011) 23794999, 9868180899 (M)', 'kushal.tiwari@sansad.nic.in', 506),
 (507, 'Tomar,Shri Narendra Singh ', '12 Jun 1957', 'Bharatiya Janata Party', 'B-144, Professor Colony,,Bhopal, Madhya Pradesh', 'Tel. (0755) 2660416', '24, Dr. Rajendra Prasad Road,, New Delhi - 110 001', 'Tels. (011) 23015544, 23015545\n9013180134 (M)', 'ns.tomar@sansad.nic.in', 507),
 (508, 'Toppo,Shri Joseph ', '02 May 1954', 'Asom Gana Parishad', 'Dhekiajuli, Ward No.1,\nP.O. Dhekiajuli,,Distt. Sonitpur,\nAssam', 'Tels. (03712) 244205, 09435047991 (M)', '42, North Avenue,, New Delhi -110 001', 'Tels. (011) 23093787, 9013180253 (M)\nFax. (011) 23093781', 'josephtoppompls@gmail.com', 508),
-(509, 'Trivedi,Shri Dinesh', '04 Jun 1950', 'All India Trinamool Congress', '8 - A, Vivek Vihar, 13/3 Pramathesh Barua Sarani ( Ballygunge Circular Road),Kolkata - 700 019, West Bengal', 'Tels. (033) 24866503, 09830050499\nFax. (033) 20520102', '4, Lodhi Estate, New Delhi-110 003', 'Tels. (011) 24641124 (R), 23061016, 23061551 (O),\nFax. (011) 24647323 (R), 23062828 (O)', 'dintriv@gmail.com', 509),
+(509, 'Trivedi,Shri Dinesh', '04 Jun 1950', 'All India Trinamool Congress', '8 - A, Vivek Vihar, 13/3 Pramathesh Barua Sarani ( Ballygunge Circular Road),Kolkata - 700 019, West Bengal', 'Tels. 09830050499 Fax. (033) 20520102', '4, Lodhi Estate, New Delhi-110 003', 'Tels. 9868181919', 'dintriv@gmail.com', 509),
 (510, 'Tudu,Shri Laxman', '16 May 1965', 'Biju Janata Dal', 'Baunshbani, P.O. - Chandua Ashram,,Distt. Mayurbhanj- 757 014\nOrissa ', 'Tels. (06792) 272106, 09438397087(M)\nFax. (06792) 272266', '92, North Avenue,, New Delhi - 110 001', 'Tel. (011) 23093221, 9013180147 (M)', '(i) tudu.laxman@sansad.nic.in\n(ii) mp.laxman@gmail.com', 510),
 (511, 'Udasi,Shri Shivkumar Chanabasappa', '20 May 1967', 'Bharatiya Janata Party', 'Gouli Galli Hangal PO-Hangal, Taluq-Hangal ,Distt. Haveri - 581 104, Karnataka', 'Tels. (08379) 262330\n09844034575(M)', '68, South Avenue, , New Delhi - 110 011', 'Tel. 9013180140 (M)', 'scu@shivkumarudasi.me', 511),
 (512, 'Upadhyay,Smt. Seema', '04 Sep 1965', 'Bahujan Samaj Party', '(i) Vill- Bamoli, Post- Luheta, Hathras,Distt. Mahamayanagar, Uttar Pradesh', ' ', '165, North Avenue,, New Delhi- 110 001', 'Tel. 9013180238 (M)', ' ', 512),
@@ -1195,7 +1195,17 @@ CREATE TABLE IF NOT EXISTS `mp_stand_on_campaigns` (
   PRIMARY KEY (`id`),
   KEY `mp_id` (`mp_id`),
   KEY `campaign_id` (`campaign_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mp_stand_on_campaigns`
+--
+
+REPLACE INTO `mp_stand_on_campaigns` (`id`, `mp_id`, `campaign_id`, `vote`) VALUES
+(1, 299, 1, 0),
+(2, 213, 1, 0),
+(3, 449, 1, 0),
+(4, 509, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -1214,7 +1224,7 @@ CREATE TABLE IF NOT EXISTS `states` (
 -- Dumping data for table `states`
 --
 
-INSERT INTO `states` (`id`, `name`) VALUES
+REPLACE INTO `states` (`id`, `name`) VALUES
 (1, 'Andaman and Nicobar Islands '),
 (2, 'Andhra Pradesh '),
 (3, 'Arunachal Pradesh '),
@@ -1357,9 +1367,9 @@ ALTER TABLE `users_sessions`
 -- Constraints for table `users_vote_on_campaigns`
 --
 ALTER TABLE `users_vote_on_campaigns`
-  ADD CONSTRAINT `users_vote_on_campaigns_ibfk_5` FOREIGN KEY (`constituency_id`) REFERENCES `constituencies` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `users_vote_on_campaigns_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `users_vote_on_campaigns_ibfk_4` FOREIGN KEY (`campaign_id`) REFERENCES `campaigns` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `users_vote_on_campaigns_ibfk_4` FOREIGN KEY (`campaign_id`) REFERENCES `campaigns` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `users_vote_on_campaigns_ibfk_5` FOREIGN KEY (`constituency_id`) REFERENCES `constituencies` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `user_comment_on_campaigns`

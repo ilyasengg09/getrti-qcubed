@@ -13,7 +13,7 @@
 		<div class="col-lg-6">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title">MPs' Stand on <?php echo $_CONTROL->campaign->Name; ?></h3></h3>
+					<h3 class="panel-title">MP"s Stand on <?php echo $_CONTROL->campaign->Name; ?></h3></h3>
 				</div>
 				<div class="panel-body">
 					<div class="row">
@@ -58,7 +58,7 @@
 		<div class="col-lg-6">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title">Users' Stand on <?php echo $_CONTROL->campaign->Name; ?></h3>
+					<h3 class="panel-title">Citizen's Voice on <?php echo $_CONTROL->campaign->Name; ?></h3>
 				</div>
 				<div class="panel-body">
 					<div class="row">

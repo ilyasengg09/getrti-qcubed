@@ -49,7 +49,7 @@
 							<div class="panel panel-success">
 								<div class="panel-heading">
 									<h3 class="panel-title" style="font-size: 24px; margin-top: 20px; margin-bottom: 10px;">
-										Constituency Stats
+										Citizen Voice
 									</h3>
 								</div>
 								<div  class="panel-body" style="min-height:250px;">
