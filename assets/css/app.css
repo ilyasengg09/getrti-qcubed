@@ -16,7 +16,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 font-weight: 500;
 line-height: 1.1;
 }
-
+/*
 #c4 {
     font-size:2.5em;
 }
@@ -26,6 +26,7 @@ line-height: 1.1;
     background-color: cadetblue;
     line-height:1.6em;
 }
+*/
 #fg1 {
     margin-top:2.5em;
     margin-bottom:2.5em;

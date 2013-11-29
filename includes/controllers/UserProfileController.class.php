@@ -36,7 +36,7 @@ class UserProfileController extends QPanel{
 			$this->lblUsername->Text = $user->Username;
 			$imgSize = 250;
 			$imgDefault = "http://getrti.co.in/assets/images/default-avatar.png";
-			$grav_url = "http://www.gravatar.com/avatar/" . md5(strtolower(trim($user->Email))) . "?d=" . urlencode($imgDefault) . "&s=" . $imgSize;
+			$grav_url = "http://www.gravatar.com/avatar/" . md5(strtolower(trim($user->Email))) . "?d=identicon" . "&s=" . $imgSize;
 			$this->strImage = "<img src='".$grav_url."'/>";
 
 			$this->strTemplate = __VIEWS_PATH__ . '/UserProfileView.tpl.php';
