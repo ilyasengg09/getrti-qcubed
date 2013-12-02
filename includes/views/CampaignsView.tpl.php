@@ -4,7 +4,7 @@
     background-color: antiquewhite;
 ">
 		<div class="col-lg-12">
-			<h2 style="font-weight:bold;padding-left:10px;"><?php echo $_CONTROL->campaign->Description; ?>
+			<h2 style="font-weight:bold;padding-left:10px;"><?php echo $_CONTROL->campaign->Question; ?>
 			</h2>
 		</div>
 	</div>

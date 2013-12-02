@@ -1,29 +1,24 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12">
-			<h3>Together for an Open Government</h3>
-			<p>Soochna ka Haq. Your Right to Know. A simple but powerful slogan that got us the Right to Information Act
-			in 2005. RTI has empowered people to ask questions of their government and breach the culture of secrecy
-			pervading the government. This process of transparency has been powered entirely by the citizen. By You.</p>
+			<br />
+			<h3>Do you think the Parliament should pass the RTI Amendment Bill that keeps political parties out of the RTI Act?</h3>
+			<p>The Right to Information (Amendment) Bill, 2013 seeks to amend the Right to Information Act 2005,
+			removing political parties from the ambit of the definition of public authorities and hence from the purview
+			of the RTI Act. If the amendment is passed by the parliament, citizens cannot access any information from
+			political parties.
 
-			<p>Now is the time to take this process of transparency a step further. Massive amount of information has
-			been liberated using the RTI, exposing scams, corruption and blatant abuse of power . Yet, a lot of this
-			lies scattered in the hands of people and organisations that have filed for such information. We felt it was
-			necessary to build a public database of all RTI requests and replies in a easy, searchable and reusable
-			format to make information open in the real sense. Thus GetRTI.org was born.</p>
+			<p>The proposed amendment is against the basic foundations of a vibrant democracy, i.e., transparency
+			and accountability.</p>
 
-			<p>GetRTI is both a crowd-sourced public repository of all RTI information as well as a filing platform.
-			You can use this platform to search from hundreds and eventually thousands of requests as well as reuse
-			data. If you have ever filed an RTI request, you can scan and upload the document onto the website in easy
-			and simple steps.</p>
+			<p>In Sep 2013, Citizens campaigned forcing the Bill to be sent to the Parliamentary Standing Committee.
+			It will be brought again in the Winter SeSsion of the Parliament, beginning on the 5th December.</p>
 
-			<p>At the end of it all, we aim to create an active space for citizen engagement using the RTI to make
-			government more transparent and accountable. As always, this process will also be driven by the citizen.
-			By you.</p>
+			<p>Its time to make your voice heard once again.. Find your MP
+			<a href="<?php echo __SM_SITE_ADDRESS__.__SM_URL_REWRITE__.'/campaign/saverti'; ?>">here</a> and let them
+			know what you think.
 
-			<p>This site has been conceived, built and operated entirely in public interest by volunteers who are
-			non-partisan and are passionate and committed to the idea of Open Government. Together, we can and we shall
-			achieve a government that is answerable to its citizens.</p>
+
 		</div>
 	</div>
 </div>
