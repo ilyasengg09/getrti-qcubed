@@ -2,7 +2,7 @@
 
 	<div class="row">
 		<div class="col-lg-12">
-			<h2 style="font-weight: bold;"><?php echo $_CONTROL->campaign->Description; ?></h2>
+			<h2 style="font-weight: bold;"><?php echo $_CONTROL->campaign->Question; ?></h2>
 		</div>
 	</div>
 	<div class="row" style="margin-top:20px;">
