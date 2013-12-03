@@ -10,6 +10,12 @@
 	</div>
 	<?php include __VIEWS_PATH__.'/searchbox.tpl.php'; ?>
 	<div class="row">
+		<div class="col-lg-12">
+			<br />
+			<p><?php echo $_CONTROL->campaign->Longdescription; ?></p>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-lg-6">
 			<div class="panel panel-default">
 				<div class="panel-heading">
