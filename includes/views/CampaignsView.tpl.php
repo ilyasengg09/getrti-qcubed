@@ -5,6 +5,12 @@
 		</div>
 	</div>
 	<div class="row">
+		<div class="col-lg-6">
+			<br />
+			<?php include __VIEWS_PATH__.'/sharebuttons.tpl.php'; ?>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-lg-12">
 			<p class="text-left"><?php echo $_CONTROL->campaign->Longdescription; ?></p>
 		</div>

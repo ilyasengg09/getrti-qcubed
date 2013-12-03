@@ -1,8 +1,10 @@
 <div class="container">
-
 	<div class="row">
 		<div class="col-lg-12">
 			<h2 style="font-weight: bold;"><?php echo $_CONTROL->campaign->Question; ?></h2>
+		</div>
+		<div class="col-lg-6">
+			<?php include __VIEWS_PATH__.'/sharebuttons.tpl.php'; ?>
 		</div>
 	</div>
 	<div class="row" style="margin-top:20px;">
@@ -29,59 +31,53 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-8">
-					<div class="row">
-						<div class="col-lg-6">
+				<div class="col-lg-4">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title" style="margin-top: 20px; margin-bottom: 10px; font-size: 24px;" >
+								MP's Stand on <?php echo $_CONTROL->campaign->Name; ?>
+							</h3>
+						</div>
+						<div class="panel-body" style="min-height: 254px;">
+							<?php $_CONTROL->lblMpStand->Render(); ?>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h3 class="panel-title" style="font-size: 24px; margin-top: 20px; margin-bottom: 10px;">
+								Citizen Voice
+							</h3>
+						</div>
+						<div  class="panel-body" style="min-height:250px;">
 							<div class="row">
-								<div class="panel panel-default">
-									<div class="panel-heading">
-										<h3 class="panel-title" style="margin-top: 20px; margin-bottom: 10px; font-size: 24px;" >
-											MP's Stand on <?php echo $_CONTROL->campaign->Name; ?>
-										</h3>
-									</div>
-									<div class="panel-body" style="min-height: 254px;">
-										<?php $_CONTROL->lblMpStand->Render(); ?>
-									</div>
+								<div class="col-lg-6">
+									<h3 class="text-success"><?php echo $_CONTROL->strConstituencyFor; ?> <small>FOR</small></h3>
+								</div>
+								<div class="col-lg-6">
+									<h3 class="text-danger"><?php echo $_CONTROL->strConstituencyAgainst; ?> <small>AGAINST</small></h3>
 								</div>
 							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="panel panel-success">
-								<div class="panel-heading">
-									<h3 class="panel-title" style="font-size: 24px; margin-top: 20px; margin-bottom: 10px;">
-										Citizen Voice
-									</h3>
+							<div class="row">
+								<div class="graph col-lg-12">
+									<canvas id="canvasusers"></canvas>
 								</div>
-								<div  class="panel-body" style="min-height:250px;">
-									<div class="row">
-										<div class="col-lg-6">
-											<h3 class="text-success"><?php echo $_CONTROL->strConstituencyFor; ?> <small>FOR</small></h3>
-										</div>
-										<div class="col-lg-6">
-											<h3 class="text-danger"><?php echo $_CONTROL->strConstituencyAgainst; ?> <small>AGAINST</small></h3>
-										</div>
-									</div>
-									<div class="row">
-										<div class="graph col-lg-12">
-											<canvas id="canvasusers"></canvas>
-										</div>
-										<script>
-											var pieDataUsers = [
-												{
-													// for
-													value : <?php echo $_CONTROL->strConstituencyFor; ?>,
-													color : "#009933"
-												},
-												{
-													// against
-													value : <?php echo $_CONTROL->strConstituencyAgainst; ?>,
-													color : "#CC3300"
-												}
-											];
-											var myPieUsers = new Chart(document.getElementById("canvasusers").getContext("2d")).Pie(pieDataUsers);
-										</script>
-									</div>
-								</div>
+								<script>
+									var pieDataUsers = [
+										{
+											// for
+											value : <?php echo $_CONTROL->strConstituencyFor; ?>,
+											color : "#009933"
+										},
+										{
+											// against
+											value : <?php echo $_CONTROL->strConstituencyAgainst; ?>,
+											color : "#CC3300"
+										}
+									];
+									var myPieUsers = new Chart(document.getElementById("canvasusers").getContext("2d")).Pie(pieDataUsers);
+								</script>
 							</div>
 						</div>
 					</div>
