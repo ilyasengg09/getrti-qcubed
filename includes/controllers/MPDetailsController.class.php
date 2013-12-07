@@ -37,6 +37,8 @@ class MPDetailsController extends QPanel{
 	public $radioVote;
 	public $strVote = "undecided";
 
+	public $pnlLogin;
+
 	public function __construct($objParentObject, $strControlId){
 		try{
 			parent::__construct($objParentObject, $strControlId);
@@ -146,8 +148,16 @@ class MPDetailsController extends QPanel{
 			$this->btnCommentSubmit = new QButton($this);
 			$this->btnCommentSubmit->Text = "Submit";
 			$this->btnCommentSubmit->ButtonMode = QButtonMode::Info;
-			$this->btnCommentSubmit->AddAction(new QEnterKeyEvent(), new QServerControlAction($this, 'btnCommentSubmit_Click'));
-			$this->btnCommentSubmit->AddAction(new QClickEvent(), new QServerControlAction($this, 'btnCommentSubmit_Click'));
+			if($this->user == null){
+				QApplicationBase::$ClassFile['logincontroller'] = __CONTROLLERS_PATH__ . '/LoginController.class.php';
+				$this->btnCommentSubmit->SetCustomAttribute('data-toggle','modal');
+				$this->btnCommentSubmit->SetCustomAttribute('data-target','#myModal');
+				$this->pnlLogin = new LoginController($this, null);
+				$this->pnlLogin->strTemplate = __VIEWS_PATH__ . '/LoginView.tpl.php';
+			}
+			else{
+				$this->btnCommentSubmit->AddAction(new QClickEvent(), new QServerControlAction($this, 'btnCommentSubmit_Click'));
+			}
 
 			// votes
 			$this->radioVote = new QRadioButtonList($this);

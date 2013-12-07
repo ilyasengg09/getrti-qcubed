@@ -2,7 +2,7 @@
 	<div class="row">
 		<?php $_CONTROL->lblLoginMsg->Render(); ?>
 		<?php $_CONTROL->lblMsg->Render(); ?>
-		<div class="col-lg-3 col-lg-offset-2">
+		<div class="col-lg-4">
 			<h3>Login to <?php echo __SM_APP_NAME__; ?></h3>
 			<div class="form-horizontal">
 				<div class="form-group">
@@ -16,7 +16,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-lg-3 col-lg-offset-1">
+		<div class="col-lg-7 col-lg-offset-1">
 			<h3>Register a new account</h3>
 			<div class="form-horizontal">
 				<div class="form-group">

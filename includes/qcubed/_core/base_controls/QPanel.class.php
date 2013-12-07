@@ -2,6 +2,8 @@
 	/**
 	 * @package Controls
 	 */
+	include __EXTERNAL_LIBRARIES__ . "/facebook-sdk/src/facebook.php";
+
 	class QPanel extends QBlockControl {
 		///////////////////////////
 		// Private Member Variables
@@ -14,6 +16,10 @@
 		public $txtSearch;
 		public $btnGo;
 		public $lblSearchMsg;
+
+		public $lblFbLoginLink;
+		public $facebook;
+		public $fbuser;
 
 		public function __construct($objParentObject, $strControlId){
 			try{
@@ -46,6 +52,15 @@
 			$this->lblSearchMsg = new IAlertLabel($this);
 			$this->lblSearchMsg->AlertLabelMode = IAlertLabelMode::Danger;
 			$this->lblSearchMsg->Visible = false;
+
+			$this->lblFbLoginLink = new QLabel($this);
+			$this->lblFbLoginLink->HtmlEntities = false;
+			$fbconfig = array(
+				'appId' => __SM_FB_APP_ID__,
+				'secret' => __SM_FB_APP_SECRET__,
+			);
+			$this->facebook = new Facebook($fbconfig);
+			$this->fbuser = $this->facebook->getUser();
 		}
 
 		public function btnGo_Click($strFormId, $strControlId, $strParameter){

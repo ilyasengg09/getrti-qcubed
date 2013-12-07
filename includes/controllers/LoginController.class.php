@@ -54,7 +54,7 @@ class LoginController extends QPanel{
 		$this->btnLogin = new QButton($this);
 		$this->btnLogin->Text = "Log In";
 		$this->btnLogin->ButtonMode = QButtonMode::Success;
-		$this->btnLogin->AddAction(new QClickEvent(), new QServerControlAction($this, 'btnLogin_Click'));
+		$this->btnLogin->AddAction(new QClickEvent(), new QAjaxControlAction($this, 'btnLogin_Click'));
 
 		// register form
 		$this->txtRegName = new QTextBox($this);
@@ -82,7 +82,7 @@ class LoginController extends QPanel{
 		$this->btnRegister = new QButton($this);
 		$this->btnRegister->Text = "Register";
 		$this->btnRegister->ButtonMode = QButtonMode::Info;
-		$this->btnRegister->AddAction(new QClickEvent(), new QServerControlAction($this, 'btnRegister_Click'));
+		$this->btnRegister->AddAction(new QClickEvent(), new QAjaxControlAction($this, 'btnRegister_Click'));
 
 
 		$this->lblMsg = new IAlertLabel($this);
