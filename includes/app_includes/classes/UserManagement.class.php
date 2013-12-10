@@ -2,6 +2,14 @@
 
 class UserManagement{
 
+	public function isRegistered($email){
+		$user = Users::LoadByEmail($email);
+		if($user==null){
+			return false;
+		}
+		return true;
+	}
+
 	public function addSession($email){
 		// create a new session in database
 		$session = new UsersSessions();

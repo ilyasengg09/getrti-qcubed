@@ -24,6 +24,8 @@ class LoginController extends QPanel{
 	public $txtRegPasswordRepeat;
 	public $btnRegister;
 
+	public $strFbLogin;
+
 	public $lblMsg;
 	public $lblLoginMsg;
 
@@ -35,11 +37,53 @@ class LoginController extends QPanel{
 			$objExc->IncrementOffset();
 			throw $objExc;
 		}
+		$utils = new Utils();
 
 		$userMan = new UserManagement();
 		if($userMan->getUser()!=null){
-			QApplication::Redirect(__SM_SITE_ADDRESS__.__SM_URL_REWRITE__);
+			if(isset($_GET['next'])){
+				QApplication::Redirect($_GET['next']);
+			}
+			else{
+				QApplication::Redirect(__SM_SITE_ADDRESS__.__SM_URL_REWRITE__);
+			}
 		}
+
+		// test if logged in via facebook
+		$fbUser = $this->facebook->getUser();
+		if($fbUser){
+			// if logged in via facebook
+			// check if this account exists
+			$user_profile = $this->facebook->api('/me','GET');
+			if($userMan->isRegistered($user_profile['email'])){
+				$userMan->addSession($user_profile['email']);
+				if(isset($_GET['next'])){
+					QApplication::Redirect($_GET['next']);
+				}
+				else{
+					QApplication::Redirect(__SM_SITE_ADDRESS__.__SM_URL_REWRITE__);
+				}
+			}
+			// if account doesnt exist
+			else{
+				$user = new Users();
+				$user->Name = $user_profile['name'];
+				$user->Username = $user_profile['username'];
+				$user->Email = $user_profile['email'];
+				$t_hasher = new PasswordHash(8, false);
+				$hashedPassword = $t_hasher->HashPassword($utils->get_random_string(10));
+				$user->Password = $hashedPassword;
+				$user->Save();
+				$userMan->addSession($user_profile['email']);
+				if(isset($_GET['next'])){
+					QApplication::Redirect($_GET['next']);
+				}
+				else{
+					QApplication::Redirect(__SM_SITE_ADDRESS__.__SM_URL_REWRITE__);
+				}
+			}
+		}
+
 
 		// login form
 		$this->txtLogUsername = new QTextBox($this);
@@ -52,9 +96,25 @@ class LoginController extends QPanel{
 		$this->txtLogPassword->Name = "Password";
 
 		$this->btnLogin = new QButton($this);
-		$this->btnLogin->Text = "Log In";
+		$this->btnLogin->Text = "Log In With Email";
 		$this->btnLogin->ButtonMode = QButtonMode::Success;
 		$this->btnLogin->AddAction(new QClickEvent(), new QAjaxControlAction($this, 'btnLogin_Click'));
+
+		// facebook login
+		if(isset($_GET['next'])){
+			$redirUrl =	__SM_SITE_ADDRESS__.__SM_URL_REWRITE__.'/login?next='.$_GET['next'];
+		}
+		else{
+			$redirUrl =	__SM_SITE_ADDRESS__.__SM_URL_REWRITE__.'/login';
+		}
+
+		$strLoginLink = $this->facebook->getLoginUrl(
+			array(
+				'redirect_uri' => $redirUrl,
+				'scope' => 'email',
+			)
+		);
+		$this->strFbLogin = "<a href='".$strLoginLink."'>Login With Facebook</a>";
 
 		// register form
 		$this->txtRegName = new QTextBox($this);
@@ -228,6 +288,7 @@ class LoginController extends QPanel{
 	}
 
 	public function btnLogin_Click($strFormId, $strControlId, $strParameter){
+		$utils = new Utils();
 		if($this->Form_Validate_Login()){
 			$user = $this->Form_Validate_Login();
 			$userMan = new UserManagement();

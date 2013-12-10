@@ -13,6 +13,7 @@
 				</div>
 				<div class="form-actions">
 					<?php $_CONTROL->btnLogin->Render(); ?>
+					<?php echo $_CONTROL->strFbLogin; ?>
 				</div>
 			</div>
 		</div>
