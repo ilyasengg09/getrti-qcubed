@@ -12,7 +12,7 @@
 					<?php $_CONTROL->txtLogPassword->RenderWithName(); ?>
 				</div>
 				<div class="form-actions">
-					<?php $_CONTROL->btnLogin->Render(); ?>
+					<?php $_CONTROL->btnLogin->Render(); ?><br /><br />
 					<?php echo $_CONTROL->strFbLogin; ?>
 				</div>
 			</div>

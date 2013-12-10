@@ -114,7 +114,7 @@ class LoginController extends QPanel{
 				'scope' => 'email',
 			)
 		);
-		$this->strFbLogin = "<a href='".$strLoginLink."'>Login With Facebook</a>";
+		$this->strFbLogin = "<a href='".$strLoginLink."'><img src='".__SM_SITE_ABSOLUTE__ADDRESS__.__APP_IMAGE_ASSETS__."/fb_login.png' /></a>";
 
 		// register form
 		$this->txtRegName = new QTextBox($this);
